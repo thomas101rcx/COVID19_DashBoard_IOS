@@ -10,7 +10,7 @@
         <!--Data View-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="UIDataView" customModule="test_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="UIDataView" customModule="COVID_19" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -132,7 +132,7 @@
         <!--Picker View-->
         <scene sceneID="tsH-H4-GLB">
             <objects>
-                <viewController id="yUN-Tq-EFb" customClass="PickerView" customModule="test_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="yUN-Tq-EFb" customClass="PickerView" customModule="COVID_19" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aVZ-nM-yiS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -181,7 +181,7 @@
         <!--Daily Increase View-->
         <scene sceneID="6ig-Xy-JGY">
             <objects>
-                <viewController id="vsW-Cs-6fJ" customClass="DailyIncreaseView" customModule="test_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vsW-Cs-6fJ" customClass="DailyIncreaseView" customModule="COVID_19" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xrd-ng-MsO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="473"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -211,12 +211,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ol3-Ia-t2g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2401" y="-537"/>
+            <point key="canvasLocation" x="2438" y="-546"/>
         </scene>
         <!--Trend Graph View-->
         <scene sceneID="gXZ-hk-dU5">
             <objects>
-                <viewController id="yff-0Z-xYB" customClass="TrendGraphView" customModule="test_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="yff-0Z-xYB" customClass="TrendGraphView" customModule="COVID_19" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="weP-ED-pU0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="473"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -245,12 +245,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xvk-eo-GFv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2439.8550724637685" y="164.73214285714286"/>
+            <point key="canvasLocation" x="2438" y="203"/>
         </scene>
         <!--Total Confirmed Cases View-->
         <scene sceneID="12Y-Lx-nIA">
             <objects>
-                <viewController id="d2z-l7-JdJ" customClass="TotalConfirmedCasesView" customModule="test_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="d2z-l7-JdJ" customClass="TotalConfirmedCasesView" customModule="COVID_19" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IL7-zU-kWZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="473"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -279,12 +279,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1oo-CT-U7o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2439.8550724637685" y="-136.60714285714286"/>
+            <point key="canvasLocation" x="2439" y="-187"/>
         </scene>
         <!--Entry Selection-->
         <scene sceneID="Eql-Xx-CwL">
             <objects>
-                <viewController id="22r-Gj-AeG" customClass="EntrySelection" customModule="test_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="22r-Gj-AeG" customClass="EntrySelection" customModule="COVID_19" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jzj-jQ-yRr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

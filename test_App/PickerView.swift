@@ -46,7 +46,6 @@ class PickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
         return pickerData[row]
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
         userInputfromPicker = pickerData[statePicker.selectedRow(inComponent: 0)]
     }
     
@@ -66,7 +65,6 @@ class PickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
                 destinationVC.userSelection = userSelection
             }
             
-            //destinationVC.modalPresentationStyle = .fullScreen
             
         }
 
@@ -80,6 +78,7 @@ class PickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
             if let url = URL(string: "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv"){
                 do {
                     list = try String(contentsOf: url)
+                    print(type(of: list))
                 } catch {
                     print("Contents can not be loaded")
                 }
@@ -88,6 +87,7 @@ class PickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
             }
             
             let raw_csv = list.components(separatedBy: "\n")
+            //print(raw_csv)
             // Extract State list
             for row in 0...raw_csv.count-2{
                 let rowArray = raw_csv[row].components(separatedBy: ",")

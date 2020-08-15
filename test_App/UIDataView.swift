@@ -60,9 +60,6 @@ class UIDataView: UIViewController {
                 self.dataLabelOne.alpha = 1
                 self.dataLabelTwo.alpha = 1
                 self.dataLabelThree.alpha = 1
-
-
-
             })
         } else if(sender.selectedSegmentIndex == 1){
             UIView.animate(withDuration: 0.5, animations: {
@@ -96,10 +93,10 @@ class UIDataView: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let defaults = UserDefaults.standard
-        if segue.identifier == "goBackMain"{
-            self.dismiss(animated: true, completion: nil)
-        }
-        else if segue.identifier == "goToThird"{
+        //if segue.identifier == "goBackMain"{
+        //    self.dismiss(animated: true, completion: nil)
+       // }
+        if segue.identifier == "goToThird"{
             let destinationVC = segue.destination as! TrendGraphView
             destinationVC.userInput = userInputPicker
             destinationVC.userSelection = userSelection
