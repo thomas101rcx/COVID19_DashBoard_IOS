@@ -19,28 +19,28 @@ class TrendGraphView: UIViewController, ChartViewDelegate {
     var covid_trend_graph = [ChartDataEntry]()
     var userInput = ""
     var userSelection = ""
-    var list = " "
+    var list = ""
+    var WorldList = ""
+    var USAList = ""
     var data = LineChartData()
     var tMinus14DaysData = 0
+    let networkManager = NetworkManager()
+
+    
     
     func generateGraph() {
         switch userSelection {
         case "World":
-            if let url = URL(string: "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv") {
-                do {
-                    list = try String(contentsOf: url)
-                } catch {
-                    print("Contents can not be loaded")
-                    
-                }
-            } else {
-                // the URL was bad!
-            }
+            networkManager.getWorldCSV()
+            list = networkManager.worldCSV
             if userInput == "United States"{
                 userInput = "US"
             }
             
+           // list = WorldList
+            
             let new_array = list.components(separatedBy: "\n")
+            //print(new_array)
             
             // Extract Data and calculate sum of confirmed cases by state
             
@@ -80,19 +80,15 @@ class TrendGraphView: UIViewController, ChartViewDelegate {
             tMinus14DaysData = Int(weekly_new_cases.last ?? 0.0)
             
         case "USA":
-            if let url = URL(string: "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv") {
-                do {
-                    list = try String(contentsOf: url)
-                } catch {
-                    print("Contents can not be loaded")
-                    
-                }
-            } else {
-                print("URL is bad")
-            }
+            networkManager.getUSACSV()
             
+            list = networkManager.USACSV
+            
+            //list = USAList
             
             let new_array = list.components(separatedBy: "\n")
+            
+            //print(new_array)
             
             // Extract Data and calculate sum of confirmed cases by state
             

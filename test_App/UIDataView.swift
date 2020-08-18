@@ -15,6 +15,8 @@ class UIDataView: UIViewController {
     @IBOutlet weak var segmentControlGraph: UISegmentedControl!
     var userInputPicker = ""
     var userSelection = ""
+    var worldList = ""
+    var USAList = ""
     //var currentCountry = ""
 
     @IBOutlet weak var rightBarButtonOutlet: UIBarButtonItem!
@@ -30,7 +32,13 @@ class UIDataView: UIViewController {
     static let toSecondView = "goToSecond"
     static let toThirdView = "goToThird"
     
+    var networkManager = NetworkManager()
+    var trendGraph = TrendGraphView()
+    
+
     override func viewDidLoad() {
+        
+        
         
         //Default to first page
         rightBarButtonOutlet.title = "Main"
@@ -45,42 +53,52 @@ class UIDataView: UIViewController {
         self.dataLabelOne.alpha = 1
         self.dataLabelTwo.alpha = 1
         self.dataLabelThree.alpha = 1
+        
+        super.viewDidLoad()
 
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        
+        networkManager.getUSACSV()
+        networkManager.getUSACSV()
+        worldList = networkManager.worldCSV
+        USAList = networkManager.USACSV
+        trendGraph.WorldList = worldList
+        trendGraph.USAList = USAList
+        
+        super.viewWillAppear(true)
+        
+    }
+    
     
     
 
     @IBAction func showGraphs(_ sender: UISegmentedControl) {
+        
+        self.dataLabelOne.alpha = 1
+        self.dataLabelTwo.alpha = 1
+        self.dataLabelThree.alpha = 1
         
         if sender.selectedSegmentIndex == 0 {
             UIView.animate(withDuration: 0.5, animations: {
                 self.firstGraphView.alpha = 0
                 self.secondGraphView.alpha = 0
                 self.thirdGraphView.alpha = 1
-                self.dataLabelOne.alpha = 1
-                self.dataLabelTwo.alpha = 1
-                self.dataLabelThree.alpha = 1
+
             })
         } else if(sender.selectedSegmentIndex == 1){
             UIView.animate(withDuration: 0.5, animations: {
                 self.firstGraphView.alpha = 0
                 self.secondGraphView.alpha = 1
                 self.thirdGraphView.alpha = 0
-                self.dataLabelOne.alpha = 1
-                self.dataLabelTwo.alpha = 1
-                self.dataLabelThree.alpha = 1
-
-
             })
         }else{
             UIView.animate(withDuration: 0.5, animations: {
                 self.firstGraphView.alpha = 1
                 self.secondGraphView.alpha = 0
                 self.thirdGraphView.alpha = 0
-                self.dataLabelOne.alpha = 1
-                self.dataLabelTwo.alpha = 1
-                self.dataLabelThree.alpha = 1
-
             })
         }
     }
@@ -88,18 +106,16 @@ class UIDataView: UIViewController {
     @IBAction func rightBarButtonAction(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: {})
         self.navigationController?.popToRootViewController(animated: true)
-        // self.performSegue(withIdentifier : "goBackToEntry", sender : self)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let defaults = UserDefaults.standard
-        //if segue.identifier == "goBackMain"{
-        //    self.dismiss(animated: true, completion: nil)
-       // }
         if segue.identifier == "goToThird"{
             let destinationVC = segue.destination as! TrendGraphView
             destinationVC.userInput = userInputPicker
             destinationVC.userSelection = userSelection
+          //  destinationVC.WorldList = worldList
+          //  destinationVC.USAList = USAList
             destinationVC.generateGraph()
      
             let displayText = "Past 14 Days Accumlated Cases : " + String(destinationVC.tMinus14DaysData)

@@ -21,7 +21,7 @@ class EntrySelection: UIViewController{
     @IBOutlet weak var storedLocationDataOne: UILabel!
     @IBOutlet weak var storedLocationName: UILabel!
     override func viewDidLoad() {
-        //super.viewDidLoad()
+        super.viewDidLoad()
         getLocation()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -40,8 +40,8 @@ class EntrySelection: UIViewController{
        
         storedLocationDataOne.text = defaults.string(forKey: "dataLabelOne") ?? "NoData"
         storedLocationDataTwo.text = defaults.string(forKey: "dataLabelTwo") ?? "NoData"
-       // let data = trendgraph.returnData()
         storedLocationDataThree.text = defaults.string(forKey: "dataLabelThree") ?? "NoData"
+        super.viewWillAppear(true)
 
     }
     
