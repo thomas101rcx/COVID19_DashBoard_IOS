@@ -13,9 +13,8 @@ class DailyIncreaseView: UIViewController{
     
     @IBOutlet weak var graphTitle: UILabel!
     @IBOutlet weak var dailyIncrView: LineChartView!
-    var confirmed_cases = Array(repeating: 0.0, count:1000)
-    var dailyIncreasedCases : [Double] = []
-    var States = Array(repeating: " ", count:1000)
+    var confirmed_cases : [Double] = []
+    var dailyIncreasedCases = Array(repeating: 0.0, count: 1000)
     var dailyIncreEntry = [ChartDataEntry]()
     var userInput = " "
     var list = " "
@@ -24,92 +23,29 @@ class DailyIncreaseView: UIViewController{
     
     
     func generateGraph() {
-        
+        let defaults = UserDefaults.standard
         switch userSelection {
         case "World":
-            if let url = URL(string: "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv") {
-                do {
-                    list = try String(contentsOf: url)
-                } catch {
-                    print("Contents can not be loaded")
-                    
-                }
-            } else {
-                print("Something is wrong !")
-            }
-            let raw_csv = list.components(separatedBy: "\n")
+            list = defaults.string(forKey : "worldCSV") ?? "world"
+            
             
             if userInput == "United States"{
                 userInput = "US"
             }
             
-            // Extract Data and calculate sum of confirmed cases by state
-            for row in raw_csv{
-                if row != ""{
-                    let rowArray = row.components(separatedBy: ",")
-                    if(rowArray[1].contains(userInput)){
-                        for column in 0...rowArray.count-14{
-                            confirmed_cases[column] = confirmed_cases[column] + (Double(rowArray[column+13].filter{!"  \n\t\r*".contains($0)}) ?? 0)
-                            
-                        }
-                    }
-                    else{
-                        //print("No country found")
-                    }
-                    
-                }
-            }
-            //remove trailing zeroes
-            confirmed_cases = confirmed_cases.removing(suffix: 0)
+            confirmed_cases = defaults.object(forKey: "worldConfirmedCases") as! [Double]
+               
+            self.appendData()
             
-            // Daily increased casess
-            for i in (1..<confirmed_cases.count-1){
-                dailyIncreasedCases.append(confirmed_cases[i] - confirmed_cases[i-1])
-                let value = ChartDataEntry(x: Double(i) ,y:confirmed_cases[i] - confirmed_cases[i-1])
-                dailyIncreEntry.append(value)
-                
-            }
-            
-            dailyIncreasedCasesToday = dailyIncreasedCases.last ?? 0.0
             
         case "USA":
-            if let url = URL(string: "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv") {
-                do {
-                    list = try String(contentsOf: url)
-                } catch {
-                    print("Contents can not be loaded")
-                    
-                }
-            } else {
-                print("Something is wrong !")
-            }
-            let raw_csv = list.components(separatedBy: "\n")
+            list = defaults.string(forKey : "USACSV") ?? "world"
             
             
-            // Extract Data and calculate sum of confirmed cases by state
-            for row in raw_csv{
-                if row != ""{
-                    let rowArray = row.components(separatedBy: ",")
-                    if(rowArray[6] == userInput){
-                        for column in 0...rowArray.count-14{
-                            confirmed_cases[column] = confirmed_cases[column] + (Double(rowArray[column+13]/*.filter{ !" \n\t\r".contains($0) }*/) ?? 0)
-                            
-                        }
-                        
-                    }
-                }
-            }
-            //remove trailing zeroes
-            confirmed_cases = confirmed_cases.removing(suffix: 0)
+            confirmed_cases = defaults.object(forKey: "USAConfirmedCases") as! [Double]
+
             
-            // Daily increased casess
-            for i in (1..<confirmed_cases.count-1){
-                dailyIncreasedCases.append(confirmed_cases[i] - confirmed_cases[i-1])
-                let value = ChartDataEntry(x: Double(i) ,y:confirmed_cases[i] - confirmed_cases[i-1])
-                dailyIncreEntry.append(value)
-                
-            }
-            dailyIncreasedCasesToday = dailyIncreasedCases.last ?? 0.0
+            self.appendData()
             
             
         default:
@@ -117,6 +53,23 @@ class DailyIncreaseView: UIViewController{
         }
         
         
+        
+        
+    }
+    
+    
+    func appendData(){
+        
+        // Daily increased casess
+        for i in (1..<confirmed_cases.count-1){
+            dailyIncreasedCases.append(confirmed_cases[i] - confirmed_cases[i-1])
+            let value = ChartDataEntry(x: Double(i) ,y:confirmed_cases[i] - confirmed_cases[i-1])
+            dailyIncreEntry.append(value)
+            
+        }
+        
+        dailyIncreasedCasesToday = dailyIncreasedCases.last ?? 0.0
+
         
         
     }
@@ -147,7 +100,7 @@ class DailyIncreaseView: UIViewController{
         timeArray = timeArray.reversed()
         dailyIncrView.xAxis.valueFormatter = IndexAxisValueFormatter(values: timeArray)
         dailyIncrView.xAxis.granularityEnabled = true
-   
+        
         
     }
     

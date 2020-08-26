@@ -15,14 +15,20 @@ class EntrySelection: UIViewController{
     var currentCountryGPS = ""
     var locationManager = CLLocationManager()
     lazy var geocoder = CLGeocoder()
-    var trendgraph = TrendGraphView()
     @IBOutlet weak var storedLocationDataThree: UILabel!
     @IBOutlet weak var storedLocationDataTwo: UILabel!
     @IBOutlet weak var storedLocationDataOne: UILabel!
     @IBOutlet weak var storedLocationName: UILabel!
+    var confirmedCasesUSA  = Array(repeating: 0.0, count:1000)
+    var confirmedCasesWorld = Array(repeating: 0.0, count:1000)
+    var networkManager = NetworkManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         getLocation()
+        networkManager.getUSACSV()
+        networkManager.getWorldCSV()
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         let defaults = UserDefaults.standard
@@ -37,12 +43,12 @@ class EntrySelection: UIViewController{
         }
         
         storedLocationName.text =  storedLocation
-       
+        
         storedLocationDataOne.text = defaults.string(forKey: "dataLabelOne") ?? "NoData"
         storedLocationDataTwo.text = defaults.string(forKey: "dataLabelTwo") ?? "NoData"
         storedLocationDataThree.text = defaults.string(forKey: "dataLabelThree") ?? "NoData"
         super.viewWillAppear(true)
-
+        
     }
     
     func getLocation(){
@@ -86,17 +92,19 @@ class EntrySelection: UIViewController{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //Store data into UserDefaults
         
-        // print(userSelection + "Hello")
         if segue.identifier == "goToUSA"{
             let destinationVC = segue.destination as! PickerView
             destinationVC.userSelection = userSelection
         }
         else if segue.identifier == "goToViewGPS"{
+          //  let barViewControllers = segue.destination as! UITabBarController
+          //  let destinationVC = barViewControllers.viewControllers![0] as! UIDataView
             let destinationVC = segue.destination as! UIDataView
             destinationVC.userInputPicker = currentCountryGPS
             destinationVC.userSelection = "World"
         }
         else{
+
             let destinationVC = segue.destination as! UIDataView
             let defaults = UserDefaults.standard
             destinationVC.userSelection = defaults.string(forKey : "userSelection") ?? "USA"

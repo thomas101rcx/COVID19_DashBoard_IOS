@@ -46,6 +46,7 @@ class UIDataView: UIViewController {
         segmentControlGraph.frame.size.height = 25
         segmentControlGraph.frame.size.width = 175
         self.navigationItem.titleView = segmentControlGraph
+        //self.tabBarController?.navigationItem.titleView = segmentControlGraph
 
         self.firstGraphView.alpha = 0
         self.secondGraphView.alpha = 0
@@ -65,8 +66,6 @@ class UIDataView: UIViewController {
         networkManager.getUSACSV()
         worldList = networkManager.worldCSV
         USAList = networkManager.USACSV
-        trendGraph.WorldList = worldList
-        trendGraph.USAList = USAList
         
         super.viewWillAppear(true)
         
@@ -114,8 +113,6 @@ class UIDataView: UIViewController {
             let destinationVC = segue.destination as! TrendGraphView
             destinationVC.userInput = userInputPicker
             destinationVC.userSelection = userSelection
-          //  destinationVC.WorldList = worldList
-          //  destinationVC.USAList = USAList
             destinationVC.generateGraph()
      
             let displayText = "Past 14 Days Accumlated Cases : " + String(destinationVC.tMinus14DaysData)

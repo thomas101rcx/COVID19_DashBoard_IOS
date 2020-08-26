@@ -14,9 +14,7 @@ class TotalConfirmedCasesView: UIViewController, ChartViewDelegate {
     @IBOutlet weak var graphTitle: UILabel!
     
     @IBOutlet weak var confirmedCasesView: LineChartView!
-    var confirmed_cases = Array(repeating: 0.0, count:1000)
-    var dailyIncreasedCases : [Double] = []
-    var States = Array(repeating: " ", count:1000)
+    var confirmed_cases : [Double] = []
     var confirmedCasesEntry = [ChartDataEntry]()
     var dailyIncreEntry = [ChartDataEntry]()
     var userInput = ""
@@ -24,88 +22,49 @@ class TotalConfirmedCasesView: UIViewController, ChartViewDelegate {
     var list = ""
     var totalConfirmedCasesToday = 0.0
     var data = LineChartData()
-    
+
     func generateGraph(){
-        
+        let defaults = UserDefaults.standard
         switch userSelection {
+            
         case "World":
-            if let url = URL(string: "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv") {
-                do {
-                    list = try String(contentsOf: url)
-                } catch {
-                    print("Contents can not be loaded")
-                    
-                }
-            } else {
-                print("Something is wrong !")
-            }
-            let raw_csv = list.components(separatedBy: "\n")
             
             if userInput == "United States"{
                 userInput = "US"
             }
-                      
             
-            // Extract Data and calculate sum of confirmed cases by state
-            for row in raw_csv{
-                if row != ""{
-                    let rowArray = row.components(separatedBy: ",")
-                    if(rowArray[1].contains(userInput)){
-                        for column in 0...rowArray.count-14{
-                            confirmed_cases[column] = confirmed_cases[column] + (Double(rowArray[column+13]/*.filter{ !" \n\t\r".contains($0) }*/) ?? 0)
-                            
-                        }
-                        
-                    }
-                }
-            }
-            //remove trailing zeroes
-            confirmed_cases = confirmed_cases.removing(suffix: 0)
-            totalConfirmedCasesToday = confirmed_cases.last ?? 0
-            for n in 0...confirmed_cases.count-1{
-                let confirmedCasesData = ChartDataEntry(x: Double(n) ,y:confirmed_cases[n])
-                confirmedCasesEntry.append(confirmedCasesData)
-            }
+            list = defaults.string(forKey : "worldCSV") ?? "world"
+            
+            confirmed_cases = defaults.object(forKey: "worldConfirmedCases") as! [Double]
+
+            
+           // totalConfirmedCasesToday = confirmed_cases.last ?? 0
+            
+            self.appendData()
             
         case "USA":
-            if let url = URL(string: "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv") {
-                do {
-                    list = try String(contentsOf: url)
-                } catch {
-                    print("Contents can not be loaded")
-                    
-                }
-            } else {
-                print("Something is wrong !")
-            }
-            let raw_csv = list.components(separatedBy: "\n")
+            list = defaults.string(forKey : "USACSV") ?? "world"
+            confirmed_cases = defaults.object(forKey: "USAConfirmedCases") as! [Double]
+
             
-            
-            // Extract Data and calculate sum of confirmed cases by state
-            for row in raw_csv{
-                if row != ""{
-                    let rowArray = row.components(separatedBy: ",")
-                    if(rowArray[6] == userInput){
-                        for column in 0...rowArray.count-14{
-                            confirmed_cases[column] = confirmed_cases[column] + (Double(rowArray[column+13]/*.filter{ !" \n\t\r".contains($0) }*/) ?? 0)
-                            
-                        }
-                        
-                    }
-                }
-            }
-            //remove trailing zeroes
-            confirmed_cases = confirmed_cases.removing(suffix: 0)
-            totalConfirmedCasesToday = confirmed_cases.last ?? 0
-            for n in 0...confirmed_cases.count-1{
-                let confirmedCasesData = ChartDataEntry(x: Double(n) ,y:confirmed_cases[n])
-                confirmedCasesEntry.append(confirmedCasesData)
-            }
+            self.appendData()
             
         default:
             print("No data")
         }
         
+        
+        
+    }
+    
+    func appendData(){
+        // Append data to Chart
+        for n in 0...confirmed_cases.count-1{
+            let confirmedCasesData = ChartDataEntry(x: Double(n) ,y:confirmed_cases[n])
+            confirmedCasesEntry.append(confirmedCasesData)
+        }
+        totalConfirmedCasesToday = confirmed_cases.last ?? 0
+
         
         
     }

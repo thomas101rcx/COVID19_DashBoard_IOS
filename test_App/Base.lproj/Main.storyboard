@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Data View-->
+        <!--Item-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="UIDataView" customModule="COVID_19" customModuleProvider="target" sceneMemberID="viewController">
@@ -84,6 +84,10 @@
                                     <constraint firstAttribute="width" constant="350" id="Xgx-wq-FtZ"/>
                                 </constraints>
                             </stackView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Dg2-Rd-p2w">
+                                <rect key="frame" x="179" y="766" width="39" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -106,6 +110,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="QfY-dh-hKC"/>
                     <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="aVB-9h-Yj6">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="shW-Rk-G8S">
                             <connections>
@@ -127,7 +132,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1668.1159420289857" y="-206.25"/>
+            <point key="canvasLocation" x="2578.2608695652175" y="-206.25"/>
         </scene>
         <!--Picker View-->
         <scene sceneID="tsH-H4-GLB">
@@ -171,12 +176,12 @@
                     <connections>
                         <outlet property="rightBarButtonOutlet" destination="qKA-iV-hAY" id="p1q-qF-mUj"/>
                         <outlet property="statePicker" destination="UwI-E7-Oka" id="83n-Qr-Dzk"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="goToNextUSA" id="Bha-pk-AEI"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="goToNextUSA" id="niu-hC-nKg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ec4-Qt-EBn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="871.01449275362324" y="-206.25"/>
+            <point key="canvasLocation" x="1522" y="-206"/>
         </scene>
         <!--Daily Increase View-->
         <scene sceneID="6ig-Xy-JGY">
@@ -211,7 +216,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ol3-Ia-t2g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2438" y="-546"/>
+            <point key="canvasLocation" x="3347.826086956522" y="-546.42857142857144"/>
         </scene>
         <!--Trend Graph View-->
         <scene sceneID="gXZ-hk-dU5">
@@ -245,7 +250,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xvk-eo-GFv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2438" y="203"/>
+            <point key="canvasLocation" x="3347.826086956522" y="202.90178571428569"/>
         </scene>
         <!--Total Confirmed Cases View-->
         <scene sceneID="12Y-Lx-nIA">
@@ -279,7 +284,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1oo-CT-U7o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2439" y="-187"/>
+            <point key="canvasLocation" x="3347.826086956522" y="-187.5"/>
         </scene>
         <!--Entry Selection-->
         <scene sceneID="Eql-Xx-CwL">
@@ -411,13 +416,12 @@
                         <outlet property="storedLocationDataTwo" destination="TBe-8Q-OEN" id="yP0-1Y-w1J"/>
                         <outlet property="storedLocationName" destination="EKI-sK-qsj" id="YFw-zf-bR0"/>
                         <segue destination="yUN-Tq-EFb" kind="show" identifier="goToUSA" id="4to-94-Wc0"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="goToViewGPS" id="ykE-4h-VBk"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="goToViewStored" id="YbZ-pi-dwp"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="goToViewGPS" id="TuR-nz-Rnq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BJt-ma-QLH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="79.710144927536234" y="-206.25"/>
+            <point key="canvasLocation" x="6" y="-206"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="AdS-Cp-as7">
@@ -440,7 +444,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ykE-4h-VBk"/>
+        <segue reference="TuR-nz-Rnq"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="location.circle" catalog="system" width="128" height="121"/>
