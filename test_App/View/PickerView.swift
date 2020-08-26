@@ -4,18 +4,17 @@ class PickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
     
     var userSelection = ""
     var pickerData: [String] = [String]()
-    var States = Array(repeating: " ", count:1000)
-    var Unique_States = Array(repeating: " ", count:1000)
+    var States : [String] = [String]()
+    var Unique_States : [String] = [String]()
     var userInputfromPicker = " "
-    var Country = Array(repeating: " ", count:1000)
-    var Unique_Country = Array(repeating: " ", count:1000)
-    
+    var Country : [String] = [String]()
+    var Unique_Country : [String] = [String]()
     let defaults = UserDefaults.standard
     
     @IBOutlet weak var statePicker: UIPickerView!
     @IBOutlet weak var rightBarButtonOutlet: UIBarButtonItem!
     
-    
+
     override func viewDidLoad() {
         
         self.pickerData = self.loadData()
@@ -71,7 +70,6 @@ class PickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
             }else{
                 destinationVC.userInputPicker = userInputfromPicker
                 destinationVC.userSelection = userSelection
-               // defaults.set("Taiwan", forKey: "userInputPicker")
             }
             
         }
@@ -90,13 +88,16 @@ class PickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
             for row in 0...raw_csv.count-2{
                 let rowArray = raw_csv[row].components(separatedBy: ",")
                 var Country_String = rowArray[1]
+                Country_String = Country_String.trimmingCharacters(in: .whitespacesAndNewlines)
                 Country_String = Country_String.replacingOccurrences(of: "\"", with: "")
                 Country_String = Country_String.replacingOccurrences(of: "*", with: "")
                 Country.append(Country_String)
             }
             Country = Country.removing(suffix: "")
             Country = Country.removing(suffix: " ")
-            Unique_Country = Array(Set(Country.removing(suffix: "State,Country")).sorted())
+            Country.removeAll{$0 == "Country/Region"}
+            
+            Unique_Country = Array(Set(Country).sorted())
             return Unique_Country
             
         case "USA":

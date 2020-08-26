@@ -39,7 +39,7 @@ class NetworkManager {
         
         if let url = URL(string: "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv") {
             do {
-                USACSV = try String(contentsOf: url)
+                USACSV = try String(contentsOf: url)                
                 defaults.set(USACSV, forKey: "USACSV")
 
             } catch {

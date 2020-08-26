@@ -19,8 +19,6 @@ class EntrySelection: UIViewController{
     @IBOutlet weak var storedLocationDataTwo: UILabel!
     @IBOutlet weak var storedLocationDataOne: UILabel!
     @IBOutlet weak var storedLocationName: UILabel!
-    var confirmedCasesUSA  = Array(repeating: 0.0, count:1000)
-    var confirmedCasesWorld = Array(repeating: 0.0, count:1000)
     var networkManager = NetworkManager()
     
     override func viewDidLoad() {
@@ -91,7 +89,7 @@ class EntrySelection: UIViewController{
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //Store data into UserDefaults
-        
+        let defaults = UserDefaults.standard
         if segue.identifier == "goToUSA"{
             let destinationVC = segue.destination as! PickerView
             destinationVC.userSelection = userSelection
@@ -102,14 +100,17 @@ class EntrySelection: UIViewController{
             let destinationVC = segue.destination as! UIDataView
             destinationVC.userInputPicker = currentCountryGPS
             destinationVC.userSelection = "World"
+            let calculations  = Calculations()
+            let worldConfirmedCases = calculations.getConfirmedCases(rawCSV: defaults.string(forKey: "worldCSV") ?? "world", userInput: currentCountryGPS, placeColumn: 1)
+             defaults.set(worldConfirmedCases, forKey: "worldConfirmedCases")
+
         }
         else{
 
             let destinationVC = segue.destination as! UIDataView
-            let defaults = UserDefaults.standard
+       
             destinationVC.userSelection = defaults.string(forKey : "userSelection") ?? "USA"
             destinationVC.userInputPicker = defaults.string(forKey : "userInputPicker") ?? "Texas"
-            
             
         }
     }

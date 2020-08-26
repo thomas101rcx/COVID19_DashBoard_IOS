@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6OE-2e-s0P">
-                                <rect key="frame" x="0.0" y="173" width="414" height="473"/>
+                                <rect key="frame" x="0.0" y="173" width="414" height="375"/>
                                 <color key="backgroundColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <viewLayoutGuide key="safeArea" id="HaP-Cg-ZqW"/>
                                 <connections>
@@ -24,7 +24,7 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GFA-xV-098">
-                                <rect key="frame" x="0.0" y="173" width="414" height="473"/>
+                                <rect key="frame" x="0.0" y="173" width="414" height="375"/>
                                 <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <viewLayoutGuide key="safeArea" id="Y51-9W-afA"/>
                                 <connections>
@@ -32,7 +32,7 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c8e-lh-mNi">
-                                <rect key="frame" x="0.0" y="173" width="414" height="473"/>
+                                <rect key="frame" x="0.0" y="173" width="414" height="375"/>
                                 <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <viewLayoutGuide key="safeArea" id="O9N-8e-hIi"/>
                                 <connections>
@@ -58,7 +58,7 @@
                                 </connections>
                             </segmentedControl>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="GnY-je-6cr">
-                                <rect key="frame" x="32" y="657" width="350" height="150"/>
+                                <rect key="frame" x="32" y="559" width="350" height="150"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="cjY-aG-9Xh">
                                         <rect key="frame" x="0.0" y="0.0" width="350" height="47.5"/>
@@ -84,10 +84,6 @@
                                     <constraint firstAttribute="width" constant="350" id="Xgx-wq-FtZ"/>
                                 </constraints>
                             </stackView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Dg2-Rd-p2w">
-                                <rect key="frame" x="179" y="766" width="39" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -132,7 +128,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2578.2608695652175" y="-206.25"/>
+            <point key="canvasLocation" x="3400" y="-206"/>
         </scene>
         <!--Picker View-->
         <scene sceneID="tsH-H4-GLB">
@@ -181,14 +177,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ec4-Qt-EBn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1522" y="-206"/>
+            <point key="canvasLocation" x="2558" y="-206"/>
         </scene>
         <!--Daily Increase View-->
         <scene sceneID="6ig-Xy-JGY">
             <objects>
                 <viewController id="vsW-Cs-6fJ" customClass="DailyIncreaseView" customModule="COVID_19" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xrd-ng-MsO">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="473"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ifg-S1-eVJ" customClass="LineChartView" customModule="Charts">
@@ -216,14 +212,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ol3-Ia-t2g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3347.826086956522" y="-546.42857142857144"/>
+            <point key="canvasLocation" x="4257.971014492754" y="-546.76339285714278"/>
         </scene>
         <!--Trend Graph View-->
         <scene sceneID="gXZ-hk-dU5">
             <objects>
                 <viewController id="yff-0Z-xYB" customClass="TrendGraphView" customModule="COVID_19" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="weP-ED-pU0">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="473"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view autoresizesSubviews="NO" clipsSubviews="YES" contentMode="center" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FVo-WJ-VNh" customClass="LineChartView" customModule="Charts">
@@ -250,14 +246,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xvk-eo-GFv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3347.826086956522" y="202.90178571428569"/>
+            <point key="canvasLocation" x="4257.971014492754" y="202.56696428571428"/>
         </scene>
         <!--Total Confirmed Cases View-->
         <scene sceneID="12Y-Lx-nIA">
             <objects>
                 <viewController id="d2z-l7-JdJ" customClass="TotalConfirmedCasesView" customModule="COVID_19" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IL7-zU-kWZ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="473"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ph1-FZ-5GD" customClass="LineChartView" customModule="Charts">
@@ -284,9 +280,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1oo-CT-U7o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3347.826086956522" y="-187.5"/>
+            <point key="canvasLocation" x="4257.971014492754" y="-187.83482142857142"/>
         </scene>
-        <!--Entry Selection-->
+        <!--Item-->
         <scene sceneID="Eql-Xx-CwL">
             <objects>
                 <viewController id="22r-Gj-AeG" customClass="EntrySelection" customModule="COVID_19" customModuleProvider="target" sceneMemberID="viewController">
@@ -409,6 +405,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="s3v-M7-ab8"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="RfD-wp-9px"/>
                     <navigationItem key="navigationItem" id="gEO-PZ-cle"/>
                     <connections>
                         <outlet property="storedLocationDataOne" destination="KLK-ky-aRE" id="uD0-bk-xaJ"/>
@@ -417,11 +414,28 @@
                         <outlet property="storedLocationName" destination="EKI-sK-qsj" id="YFw-zf-bR0"/>
                         <segue destination="yUN-Tq-EFb" kind="show" identifier="goToUSA" id="4to-94-Wc0"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="goToViewGPS" id="TuR-nz-Rnq"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="goToViewStored" id="Ots-99-0Oh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BJt-ma-QLH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6" y="-206"/>
+            <point key="canvasLocation" x="1719" y="-206"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="Xq5-s2-ZPX">
+            <objects>
+                <viewController id="avw-f7-Wkj" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3b0-JQ-oCu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="O9a-xN-j91"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="2XB-jP-L1p"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qRH-Ua-Ze5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1719" y="548"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="AdS-Cp-as7">
@@ -435,16 +449,35 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="22r-Gj-AeG" kind="relationship" relationship="rootViewController" id="7A3-m5-PmZ"/>
+                        <segue destination="wR0-Lu-uEC" kind="relationship" relationship="rootViewController" id="7A3-m5-PmZ"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uct-NF-1Pb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-830.43478260869574" y="-206.25"/>
+            <point key="canvasLocation" x="87" y="-206"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="1b5-nZ-C2N">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="wR0-Lu-uEC" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="82M-2A-eiZ"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="h27-bk-kSJ">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="22r-Gj-AeG" kind="relationship" relationship="viewControllers" id="GWM-9N-pqr"/>
+                        <segue destination="avw-f7-Wkj" kind="relationship" relationship="viewControllers" id="GKA-nd-m0E"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k0j-Rz-uZT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="916" y="-206"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="TuR-nz-Rnq"/>
+        <segue reference="niu-hC-nKg"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="location.circle" catalog="system" width="128" height="121"/>

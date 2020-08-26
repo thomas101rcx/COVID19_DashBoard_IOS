@@ -32,12 +32,7 @@ class UIDataView: UIViewController {
     static let toSecondView = "goToSecond"
     static let toThirdView = "goToThird"
     
-    var networkManager = NetworkManager()
-    var trendGraph = TrendGraphView()
-    
-
     override func viewDidLoad() {
-        
         
         
         //Default to first page
@@ -46,6 +41,7 @@ class UIDataView: UIViewController {
         segmentControlGraph.frame.size.height = 25
         segmentControlGraph.frame.size.width = 175
         self.navigationItem.titleView = segmentControlGraph
+        
         //self.tabBarController?.navigationItem.titleView = segmentControlGraph
 
         self.firstGraphView.alpha = 0
@@ -59,17 +55,7 @@ class UIDataView: UIViewController {
 
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-        
-        networkManager.getUSACSV()
-        networkManager.getUSACSV()
-        worldList = networkManager.worldCSV
-        USAList = networkManager.USACSV
-        
-        super.viewWillAppear(true)
-        
-    }
+
     
     
     

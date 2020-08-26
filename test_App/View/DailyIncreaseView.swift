@@ -14,7 +14,7 @@ class DailyIncreaseView: UIViewController{
     @IBOutlet weak var graphTitle: UILabel!
     @IBOutlet weak var dailyIncrView: LineChartView!
     var confirmed_cases : [Double] = []
-    var dailyIncreasedCases = Array(repeating: 0.0, count: 1000)
+    var dailyIncreasedCases : [Double] = []
     var dailyIncreEntry = [ChartDataEntry]()
     var userInput = " "
     var list = " "
