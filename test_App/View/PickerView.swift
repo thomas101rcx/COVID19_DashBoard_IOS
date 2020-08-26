@@ -6,7 +6,7 @@ class PickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
     var pickerData: [String] = [String]()
     var States : [String] = [String]()
     var Unique_States : [String] = [String]()
-    var userInputfromPicker = " "
+    var userInputfromPicker = ""
     var Country : [String] = [String]()
     var Unique_Country : [String] = [String]()
     let defaults = UserDefaults.standard
