@@ -13,6 +13,8 @@
 		7274E4C624B0B055007BF6AE /* DailyIncreaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274E4C524B0B055007BF6AE /* DailyIncreaseView.swift */; };
 		7274E4C824B0B491007BF6AE /* TotalConfirmedCasesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274E4C724B0B491007BF6AE /* TotalConfirmedCasesView.swift */; };
 		7274E4CA24B0B540007BF6AE /* TrendGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274E4C924B0B540007BF6AE /* TrendGraphView.swift */; };
+		7298114F24FA33B60057E71D /* RankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7298114E24FA33B60057E71D /* RankingView.swift */; };
+		7298115124FA36B10057E71D /* RankingSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7298115024FA36B10057E71D /* RankingSelection.swift */; };
 		72DD9EA024F504AE00F56151 /* Calculations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DD9E9F24F504AE00F56151 /* Calculations.swift */; };
 		72DD9EA224F505CD00F56151 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DD9EA124F505CD00F56151 /* Constants.swift */; };
 		72EBDC7624A990DD0039D491 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72EBDC7524A990DD0039D491 /* AppDelegate.swift */; };
@@ -52,6 +54,8 @@
 		7274E4C524B0B055007BF6AE /* DailyIncreaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyIncreaseView.swift; sourceTree = "<group>"; };
 		7274E4C724B0B491007BF6AE /* TotalConfirmedCasesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalConfirmedCasesView.swift; sourceTree = "<group>"; };
 		7274E4C924B0B540007BF6AE /* TrendGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendGraphView.swift; sourceTree = "<group>"; };
+		7298114E24FA33B60057E71D /* RankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingView.swift; sourceTree = "<group>"; };
+		7298115024FA36B10057E71D /* RankingSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingSelection.swift; sourceTree = "<group>"; };
 		72DD9E9F24F504AE00F56151 /* Calculations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculations.swift; sourceTree = "<group>"; };
 		72DD9EA124F505CD00F56151 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		72EBDC7224A990DD0039D491 /* COVID_19.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = COVID_19.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,6 +140,8 @@
 				72EBDC7B24A990DD0039D491 /* Main.storyboard */,
 				72EBDC8324A990E00039D491 /* LaunchScreen.storyboard */,
 				72F3690524B2112E00C4D630 /* EntrySelection.swift */,
+				7298114E24FA33B60057E71D /* RankingView.swift */,
+				7298115024FA36B10057E71D /* RankingSelection.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -388,9 +394,11 @@
 				7264944024EBB391009B5F68 /* NetworkManager.swift in Sources */,
 				7215E6E824E83753003784B8 /* Improvements.swift in Sources */,
 				723AF18E24AC8B8E000FDCE0 /* UIDataView.swift in Sources */,
+				7298114F24FA33B60057E71D /* RankingView.swift in Sources */,
 				72DD9EA224F505CD00F56151 /* Constants.swift in Sources */,
 				72DD9EA024F504AE00F56151 /* Calculations.swift in Sources */,
 				7274E4CA24B0B540007BF6AE /* TrendGraphView.swift in Sources */,
+				7298115124FA36B10057E71D /* RankingSelection.swift in Sources */,
 				7274E4C624B0B055007BF6AE /* DailyIncreaseView.swift in Sources */,
 				72EBDC7824A990DD0039D491 /* SceneDelegate.swift in Sources */,
 				72F3690624B2112E00C4D630 /* EntrySelection.swift in Sources */,

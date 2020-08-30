@@ -16,7 +16,7 @@ class NetworkManager {
     var USACSV = ""
     let defaults = UserDefaults.standard
     
-    func getWorldCSV(){
+    func setWorldCSV(){
         
         if let url = URL(string: "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv") {
             do {
@@ -35,7 +35,7 @@ class NetworkManager {
     }
     
     
-    func getUSACSV(){
+    func setUSACSV(){
         
         if let url = URL(string: "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv") {
             do {
@@ -51,5 +51,40 @@ class NetworkManager {
         }
         
     }
+    func getWorldCSV() -> String{
+          
+          if let url = URL(string: "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv") {
+              do {
+                  worldCSV = try String(contentsOf: url)
+                  
+              } catch {
+                  print("Contents can not be loaded")
+                  
+              }
+          } else {
+              // the URL was bad!
+              print("The URL is bad !")
+          }
+          return worldCSV
+           
+      }
+      
+      
+      func getUSACSV() -> String{
+          
+          if let url = URL(string: "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv") {
+              do {
+                  USACSV = try String(contentsOf: url)
+                  
+
+              } catch {
+                  print("Contents can not be loaded")
+                  
+              }
+          } else {
+              print("URL is bad")
+          }
+          return USACSV
+      }
     
 }

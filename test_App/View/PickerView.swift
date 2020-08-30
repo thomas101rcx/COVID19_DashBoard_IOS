@@ -17,7 +17,7 @@ class PickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
 
     override func viewDidLoad() {
         
-        self.pickerData = self.loadData()
+        self.pickerData = self.loadData(userSelection: userSelection)
         self.statePicker.dataSource = self
         self.statePicker.delegate = self
         rightBarButtonOutlet.title = "next"
@@ -31,7 +31,7 @@ class PickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
     }
     
     @IBAction func rightbarButtonAction(_ sender: UIBarButtonItem) {
-        self.performSegue(withIdentifier : "goToNextUSA", sender : self)
+        self.performSegue(withIdentifier : "goToUIView", sender : self)
     }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -57,7 +57,7 @@ class PickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
         defaults.set(userInputfromPicker, forKey: "userInputPicker")
         defaults.set(userSelection, forKey: "userSelection")
         
-        if segue.identifier == "goToNextUSA"{
+        if segue.identifier == "goToUIView"{
             
            // let barViewControllers = segue.destination as! UITabBarController
            // let destinationVC = barViewControllers.viewControllers![0] as! UIDataView
@@ -76,7 +76,7 @@ class PickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
         
     }
     
-    func loadData() -> [String] {
+    func loadData(userSelection : String) -> [String] {
         
         switch userSelection {
         case "World":
@@ -127,8 +127,8 @@ class PickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
             defaults.set(worldConfirmedCases, forKey: "worldConfirmedCases")
         }
         else{
-            var USAConfirmedCases = Array(repeating: 0.0, count: 1000)
-            USAConfirmedCases =  calculations.getConfirmedCases(rawCSV: defaults.string(forKey: "USACSV") ?? "world", userInput: userInputfromPicker, placeColumn: 6)
+           // var USAConfirmedCases = Array(repeating: 0.0, count: 1000)
+            let USAConfirmedCases =  calculations.getConfirmedCases(rawCSV: defaults.string(forKey: "USACSV") ?? "world", userInput: userInputfromPicker, placeColumn: 6)
             defaults.set(USAConfirmedCases, forKey: "USAConfirmedCases")
         }
         

@@ -24,8 +24,8 @@ class EntrySelection: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         getLocation()
-        networkManager.getUSACSV()
-        networkManager.getWorldCSV()
+        networkManager.setUSACSV()
+        networkManager.setWorldCSV()
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -58,11 +58,11 @@ class EntrySelection: UIViewController{
     
     @IBAction func goToWorld(_ sender: UIButton) {
         userSelection = "World"
-        self.performSegue(withIdentifier : "goToUSA", sender : self)
+        self.performSegue(withIdentifier : "goToPickerView", sender : self)
     }
     @IBAction func goToUSA(_ sender: UIButton) {
         userSelection = "USA"
-        self.performSegue(withIdentifier : "goToUSA", sender : self)
+        self.performSegue(withIdentifier : "goToPickerView", sender : self)
     }
     
     @IBAction func loadStoredData(_ sender: UIButton) {
@@ -90,7 +90,7 @@ class EntrySelection: UIViewController{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //Store data into UserDefaults
         let defaults = UserDefaults.standard
-        if segue.identifier == "goToUSA"{
+        if segue.identifier == "goToPickerView"{
             let destinationVC = segue.destination as! PickerView
             destinationVC.userSelection = userSelection
         }
