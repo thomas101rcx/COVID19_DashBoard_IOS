@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="b2B-ri-pdE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="b2B-ri-pdE">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Data View-->
+        <!--Item-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="UIDataView" customModule="COVID_19" customModuleProvider="target" sceneMemberID="viewController">
@@ -106,6 +106,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="QfY-dh-hKC"/>
                     <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="aVB-9h-Yj6">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="shW-Rk-G8S">
                             <connections>
@@ -127,7 +128,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1668.1159420289857" y="-206.25"/>
+            <point key="canvasLocation" x="3400" y="-206"/>
         </scene>
         <!--Picker View-->
         <scene sceneID="tsH-H4-GLB">
@@ -171,12 +172,12 @@
                     <connections>
                         <outlet property="rightBarButtonOutlet" destination="qKA-iV-hAY" id="p1q-qF-mUj"/>
                         <outlet property="statePicker" destination="UwI-E7-Oka" id="83n-Qr-Dzk"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="goToNextUSA" id="Bha-pk-AEI"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="goToUIView" id="niu-hC-nKg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ec4-Qt-EBn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="871.01449275362324" y="-206.25"/>
+            <point key="canvasLocation" x="2558" y="-206"/>
         </scene>
         <!--Daily Increase View-->
         <scene sceneID="6ig-Xy-JGY">
@@ -211,7 +212,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ol3-Ia-t2g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2438" y="-546"/>
+            <point key="canvasLocation" x="4257.971014492754" y="-546.76339285714278"/>
         </scene>
         <!--Trend Graph View-->
         <scene sceneID="gXZ-hk-dU5">
@@ -245,7 +246,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xvk-eo-GFv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2438" y="203"/>
+            <point key="canvasLocation" x="4257.971014492754" y="202.56696428571428"/>
         </scene>
         <!--Total Confirmed Cases View-->
         <scene sceneID="12Y-Lx-nIA">
@@ -279,9 +280,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1oo-CT-U7o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2439" y="-187"/>
+            <point key="canvasLocation" x="4257.971014492754" y="-187.83482142857142"/>
         </scene>
-        <!--Entry Selection-->
+        <!--Single Location-->
         <scene sceneID="Eql-Xx-CwL">
             <objects>
                 <viewController id="22r-Gj-AeG" customClass="EntrySelection" customModule="COVID_19" customModuleProvider="target" sceneMemberID="viewController">
@@ -404,20 +405,149 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="s3v-M7-ab8"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Single Location" image="doc.plaintext" catalog="system" id="RfD-wp-9px"/>
                     <navigationItem key="navigationItem" id="gEO-PZ-cle"/>
                     <connections>
                         <outlet property="storedLocationDataOne" destination="KLK-ky-aRE" id="uD0-bk-xaJ"/>
                         <outlet property="storedLocationDataThree" destination="2co-aT-0Wd" id="S7a-6x-E5E"/>
                         <outlet property="storedLocationDataTwo" destination="TBe-8Q-OEN" id="yP0-1Y-w1J"/>
                         <outlet property="storedLocationName" destination="EKI-sK-qsj" id="YFw-zf-bR0"/>
-                        <segue destination="yUN-Tq-EFb" kind="show" identifier="goToUSA" id="4to-94-Wc0"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="goToViewGPS" id="ykE-4h-VBk"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="goToViewStored" id="YbZ-pi-dwp"/>
+                        <segue destination="yUN-Tq-EFb" kind="show" identifier="goToPickerView" id="4to-94-Wc0"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="goToViewGPS" id="TuR-nz-Rnq"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="goToViewStored" id="Ots-99-0Oh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BJt-ma-QLH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="79.710144927536234" y="-206.25"/>
+            <point key="canvasLocation" x="1719" y="-206"/>
+        </scene>
+        <!--Ranking-->
+        <scene sceneID="Xq5-s2-ZPX">
+            <objects>
+                <viewController id="avw-f7-Wkj" customClass="RankingSelection" customModule="COVID_19" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3b0-JQ-oCu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="cSx-ka-Wiv">
+                                <rect key="frame" x="130.5" y="427" width="153" height="42"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="230" verticalHuggingPriority="230" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kgc-zb-ptI">
+                                        <rect key="frame" x="0.0" y="0.0" width="64" height="42"/>
+                                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="World">
+                                            <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <real key="value" value="12.5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="goToWorld:" destination="22r-Gj-AeG" eventType="touchUpInside" id="ldd-Z7-qxy"/>
+                                            <action selector="goToWorldRanking:" destination="avw-f7-Wkj" eventType="touchUpInside" id="WR3-Xj-occ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VA6-ey-Fsl">
+                                        <rect key="frame" x="89" y="0.0" width="64" height="42"/>
+                                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <state key="normal" title="USA">
+                                            <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <real key="value" value="12.5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="goToUSA:" destination="22r-Gj-AeG" eventType="touchUpInside" id="lfW-H6-nu6"/>
+                                            <action selector="goToUSARanking:" destination="avw-f7-Wkj" eventType="touchUpInside" id="y7z-0Q-D4z"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="cSx-ka-Wiv" firstAttribute="centerY" secondItem="3b0-JQ-oCu" secondAttribute="centerY" id="Pz0-Xc-0Ko"/>
+                            <constraint firstItem="cSx-ka-Wiv" firstAttribute="centerX" secondItem="3b0-JQ-oCu" secondAttribute="centerX" id="deO-7O-8eW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="O9a-xN-j91"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Ranking" image="table" catalog="system" id="2XB-jP-L1p"/>
+                    <connections>
+                        <outlet property="USARanking" destination="VA6-ey-Fsl" id="DaO-oh-8dv"/>
+                        <outlet property="worldRanking" destination="Kgc-zb-ptI" id="8CQ-04-gZE"/>
+                        <segue destination="0tG-B6-7NE" kind="show" identifier="goToRank" id="Kk2-5X-cIA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qRH-Ua-Ze5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1719" y="548"/>
+        </scene>
+        <!--Ranking View-->
+        <scene sceneID="bww-B3-i1d">
+            <objects>
+                <tableViewController id="0tG-B6-7NE" customClass="RankingView" customModule="COVID_19" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="5HE-Lh-hPb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CountryCell" textLabel="lP8-SS-1bc" detailTextLabel="gMN-VU-5QW" rowHeight="50" style="IBUITableViewCellStyleValue1" id="bj1-1b-4rj">
+                                <rect key="frame" x="0.0" y="28" width="414" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bj1-1b-4rj" id="dLQ-NC-ckK">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lP8-SS-1bc">
+                                            <rect key="frame" x="20" y="15" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gMN-VU-5QW">
+                                            <rect key="frame" x="335" y="15" width="59" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="0tG-B6-7NE" id="dNA-Zv-IrU"/>
+                            <outlet property="delegate" destination="0tG-B6-7NE" id="yvm-iS-aPl"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="B5Z-cU-9Xk">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="f4h-0z-nIE">
+                            <rect key="frame" x="78.5" y="5.5" width="257" height="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Confirmed"/>
+                                <segment title="Change"/>
+                                <segment title="Trend"/>
+                            </segments>
+                            <connections>
+                                <action selector="sortControlAction:" destination="0tG-B6-7NE" eventType="valueChanged" id="t6c-lO-JAx"/>
+                            </connections>
+                        </segmentedControl>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="sortControlView" destination="f4h-0z-nIE" id="Gyo-fs-4Aj"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G7c-0l-LEG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2724.6376811594205" y="547.76785714285711"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="AdS-Cp-as7">
@@ -431,18 +561,40 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="22r-Gj-AeG" kind="relationship" relationship="rootViewController" id="7A3-m5-PmZ"/>
+                        <segue destination="wR0-Lu-uEC" kind="relationship" relationship="rootViewController" id="7A3-m5-PmZ"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uct-NF-1Pb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-830.43478260869574" y="-206.25"/>
+            <point key="canvasLocation" x="87" y="-206"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="1b5-nZ-C2N">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="wR0-Lu-uEC" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="82M-2A-eiZ"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="h27-bk-kSJ">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="22r-Gj-AeG" kind="relationship" relationship="viewControllers" id="GWM-9N-pqr"/>
+                        <segue destination="avw-f7-Wkj" kind="relationship" relationship="viewControllers" id="GKA-nd-m0E"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k0j-Rz-uZT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="916" y="-206"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ykE-4h-VBk"/>
+        <segue reference="TuR-nz-Rnq"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="doc.plaintext" catalog="system" width="115" height="128"/>
         <image name="location.circle" catalog="system" width="128" height="121"/>
+        <image name="table" catalog="system" width="128" height="93"/>
     </resources>
 </document>

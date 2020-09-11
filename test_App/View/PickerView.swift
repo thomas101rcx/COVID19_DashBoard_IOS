@@ -1,38 +1,37 @@
 import UIKit
 
-class PickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class PickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
     
     var userSelection = ""
     var pickerData: [String] = [String]()
+    var States : [String] = [String]()
+    var Unique_States : [String] = [String]()
+    var userInputfromPicker = ""
+    var Country : [String] = [String]()
+    var Unique_Country : [String] = [String]()
+    let defaults = UserDefaults.standard
+    
     @IBOutlet weak var statePicker: UIPickerView!
-    var States = Array(repeating: " ", count:1000)
-    var Unique_States = Array(repeating: " ", count:1000)
-    var userInputfromPicker = " "
-    var Country = Array(repeating: " ", count:1000)
-    var Unique_Country = Array(repeating: " ", count:1000)
-    
-    
     @IBOutlet weak var rightBarButtonOutlet: UIBarButtonItem!
     
     
     override func viewDidLoad() {
-       // print(self.userSelection)
         
-        self.pickerData = self.loadData()
+        self.pickerData = self.loadData(userSelection: userSelection)
         self.statePicker.dataSource = self
         self.statePicker.delegate = self
         rightBarButtonOutlet.title = "next"
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { // Change `2.0` to the desired number of seconds.
             // Code you want to be delayed
+            
+            
             super.viewDidLoad()
         }
         
     }
-
+    
     @IBAction func rightbarButtonAction(_ sender: UIBarButtonItem) {
-        //sender.tintColor = UIColor.clear
-        self.performSegue(withIdentifier : "goToNextUSA", sender : self)
-        
+        self.performSegue(withIdentifier : "goToUIView", sender : self)
     }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -49,11 +48,19 @@ class PickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
         userInputfromPicker = pickerData[statePicker.selectedRow(inComponent: 0)]
     }
     
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        self.preLoadconfirmedCases()
+        
         let defaults = UserDefaults.standard
         defaults.set(userInputfromPicker, forKey: "userInputPicker")
         defaults.set(userSelection, forKey: "userSelection")
-        if segue.identifier == "goToNextUSA"{
+        
+        if segue.identifier == "goToUIView"{
+            
+            // let barViewControllers = segue.destination as! UITabBarController
+            // let destinationVC = barViewControllers.viewControllers![0] as! UIDataView
             let destinationVC = segue.destination as! UIDataView
             if(userInputfromPicker == " " || userInputfromPicker == ""){
                 destinationVC.userInputPicker = "Texas"
@@ -65,58 +72,36 @@ class PickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
                 destinationVC.userSelection = userSelection
             }
             
-            
         }
-
+        
     }
     
-    func loadData() -> [String] {
+    func loadData(userSelection : String) -> [String] {
         
         switch userSelection {
         case "World":
-            var list = " "
-            if let url = URL(string: "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv"){
-                do {
-                    list = try String(contentsOf: url)
-                    print(type(of: list))
-                } catch {
-                    print("Contents can not be loaded")
-                }
-            } else {
-                print("Something is wrong !")
-            }
+            let list = defaults.string(forKey : "worldCSV") ?? "world"
             
             let raw_csv = list.components(separatedBy: "\n")
-            //print(raw_csv)
+            
             // Extract State list
             for row in 0...raw_csv.count-2{
                 let rowArray = raw_csv[row].components(separatedBy: ",")
                 var Country_String = rowArray[1]
+                Country_String = Country_String.trimmingCharacters(in: .whitespacesAndNewlines)
                 Country_String = Country_String.replacingOccurrences(of: "\"", with: "")
                 Country_String = Country_String.replacingOccurrences(of: "*", with: "")
-                //Get rid of un-Alpha Numeric characters
-                //let unsafeChars = CharacterSet.alphanumerics.inverted
-                //Country_String = Country_String.components(separatedBy: unsafeChars).joined(separator:"")
                 Country.append(Country_String)
             }
             Country = Country.removing(suffix: "")
             Country = Country.removing(suffix: " ")
-            Unique_Country = Array(Set(Country.removing(suffix: "State,Country")).sorted())
-           // print(Unique_Country)
+            Country.removeAll{$0 == "Country/Region"}
+            
+            Unique_Country = Array(Set(Country).sorted())
             return Unique_Country
             
         case "USA":
-            var list = " "
-            
-            if let url = URL(string: "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv") {
-                do {
-                    list = try String(contentsOf: url)
-                } catch {
-                    print("Contents can not be loaded")
-                }
-            } else {
-                print("Something is wrong !")
-            }
+            let list = defaults.string(forKey : "USACSV") ?? "USA"
             
             let raw_csv = list.components(separatedBy: "\n")
             // Extract State list
@@ -126,13 +111,33 @@ class PickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
             }
             States = States.removing(suffix: "")
             States = States.removing(suffix: " ")
+            
             Unique_States = Array(Set(States.removing(suffix: "Province_State")).sorted())
+            Unique_States = Unique_States.filter { $0 != "American Samoa" }
+            Unique_States = Unique_States.filter { $0 != "Province_State" }
+            Unique_States = Unique_States.filter { $0 != "Grand Princess" }
+            Unique_States = Unique_States.filter { $0 != "Diamond Princess" }
+            
             return Unique_States
             
         default:
             return ["No selection"]
         }
-      
+    }
+    
+    func preLoadconfirmedCases(){
+        let calculations = Calculations()
+        
+        if userSelection == "World"{
+            let worldConfirmedCases =  calculations.getConfirmedCases(rawCSV: defaults.string(forKey: "worldCSV") ?? "world", userInput: userInputfromPicker, placeColumn: 1)
+            defaults.set(worldConfirmedCases, forKey: "worldConfirmedCases")
+        }
+        else{
+            // var USAConfirmedCases = Array(repeating: 0.0, count: 1000)
+            let USAConfirmedCases =  calculations.getConfirmedCases(rawCSV: defaults.string(forKey: "USACSV") ?? "world", userInput: userInputfromPicker, placeColumn: 6)
+            defaults.set(USAConfirmedCases, forKey: "USAConfirmedCases")
+        }
+        
     }
 }
 

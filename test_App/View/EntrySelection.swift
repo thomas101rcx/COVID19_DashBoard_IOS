@@ -15,17 +15,23 @@ class EntrySelection: UIViewController{
     var currentCountryGPS = ""
     var locationManager = CLLocationManager()
     lazy var geocoder = CLGeocoder()
-    var trendgraph = TrendGraphView()
     @IBOutlet weak var storedLocationDataThree: UILabel!
     @IBOutlet weak var storedLocationDataTwo: UILabel!
     @IBOutlet weak var storedLocationDataOne: UILabel!
     @IBOutlet weak var storedLocationName: UILabel!
+    var networkManager = NetworkManager()
+    let defaults = UserDefaults.standard
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         getLocation()
+        networkManager.setUSACSV()
+        networkManager.setWorldCSV()
+        networkManager.getUSACSVRanking()
+        
     }
     override func viewWillAppear(_ animated: Bool) {
-        let defaults = UserDefaults.standard
         let country = defaults.string(forKey : "userSelection") ?? "USA"
         let state = defaults.string(forKey : "userInputPicker") ?? "Texas"
         var storedLocation = ""
@@ -37,12 +43,12 @@ class EntrySelection: UIViewController{
         }
         
         storedLocationName.text =  storedLocation
-       
+        
         storedLocationDataOne.text = defaults.string(forKey: "dataLabelOne") ?? "NoData"
         storedLocationDataTwo.text = defaults.string(forKey: "dataLabelTwo") ?? "NoData"
         storedLocationDataThree.text = defaults.string(forKey: "dataLabelThree") ?? "NoData"
         super.viewWillAppear(true)
-
+        
     }
     
     func getLocation(){
@@ -54,11 +60,11 @@ class EntrySelection: UIViewController{
     
     @IBAction func goToWorld(_ sender: UIButton) {
         userSelection = "World"
-        self.performSegue(withIdentifier : "goToUSA", sender : self)
+        self.performSegue(withIdentifier : "goToPickerView", sender : self)
     }
     @IBAction func goToUSA(_ sender: UIButton) {
         userSelection = "USA"
-        self.performSegue(withIdentifier : "goToUSA", sender : self)
+        self.performSegue(withIdentifier : "goToPickerView", sender : self)
     }
     
     @IBAction func loadStoredData(_ sender: UIButton) {
@@ -75,7 +81,6 @@ class EntrySelection: UIViewController{
             
             
         }else{
-            let defaults = UserDefaults.standard
             defaults.set(currentCountryGPS, forKey: "userInputPicker")
             defaults.set("World", forKey: "userSelection")
             self.performSegue(withIdentifier : "goToViewGPS", sender : self)
@@ -85,23 +90,27 @@ class EntrySelection: UIViewController{
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //Store data into UserDefaults
-        
-        // print(userSelection + "Hello")
-        if segue.identifier == "goToUSA"{
+        if segue.identifier == "goToPickerView"{
             let destinationVC = segue.destination as! PickerView
             destinationVC.userSelection = userSelection
         }
         else if segue.identifier == "goToViewGPS"{
+            //  let barViewControllers = segue.destination as! UITabBarController
+            //  let destinationVC = barViewControllers.viewControllers![0] as! UIDataView
             let destinationVC = segue.destination as! UIDataView
             destinationVC.userInputPicker = currentCountryGPS
             destinationVC.userSelection = "World"
+            let calculations  = Calculations()
+            let worldConfirmedCases = calculations.getConfirmedCases(rawCSV: defaults.string(forKey: "worldCSV") ?? "world", userInput: currentCountryGPS, placeColumn: 1)
+            defaults.set(worldConfirmedCases, forKey: "worldConfirmedCases")
+            
         }
         else{
+            
             let destinationVC = segue.destination as! UIDataView
-            let defaults = UserDefaults.standard
+            
             destinationVC.userSelection = defaults.string(forKey : "userSelection") ?? "USA"
             destinationVC.userInputPicker = defaults.string(forKey : "userInputPicker") ?? "Texas"
-            
             
         }
     }
