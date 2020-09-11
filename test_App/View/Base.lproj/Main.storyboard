@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="b2B-ri-pdE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="b2B-ri-pdE">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -282,7 +282,7 @@
             </objects>
             <point key="canvasLocation" x="4257.971014492754" y="-187.83482142857142"/>
         </scene>
-        <!--Item-->
+        <!--Single Location-->
         <scene sceneID="Eql-Xx-CwL">
             <objects>
                 <viewController id="22r-Gj-AeG" customClass="EntrySelection" customModule="COVID_19" customModuleProvider="target" sceneMemberID="viewController">
@@ -405,7 +405,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="s3v-M7-ab8"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="RfD-wp-9px"/>
+                    <tabBarItem key="tabBarItem" title="Single Location" image="doc.plaintext" catalog="system" id="RfD-wp-9px"/>
                     <navigationItem key="navigationItem" id="gEO-PZ-cle"/>
                     <connections>
                         <outlet property="storedLocationDataOne" destination="KLK-ky-aRE" id="uD0-bk-xaJ"/>
@@ -421,7 +421,7 @@
             </objects>
             <point key="canvasLocation" x="1719" y="-206"/>
         </scene>
-        <!--Item-->
+        <!--Ranking-->
         <scene sceneID="Xq5-s2-ZPX">
             <objects>
                 <viewController id="avw-f7-Wkj" customClass="RankingSelection" customModule="COVID_19" customModuleProvider="target" sceneMemberID="viewController">
@@ -476,7 +476,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O9a-xN-j91"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="2XB-jP-L1p"/>
+                    <tabBarItem key="tabBarItem" title="Ranking" image="table" catalog="system" id="2XB-jP-L1p"/>
                     <connections>
                         <outlet property="USARanking" destination="VA6-ey-Fsl" id="DaO-oh-8dv"/>
                         <outlet property="worldRanking" destination="Kgc-zb-ptI" id="8CQ-04-gZE"/>
@@ -526,11 +526,28 @@
                             <outlet property="delegate" destination="0tG-B6-7NE" id="yvm-iS-aPl"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="B5Z-cU-9Xk"/>
+                    <navigationItem key="navigationItem" id="B5Z-cU-9Xk">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="f4h-0z-nIE">
+                            <rect key="frame" x="78.5" y="5.5" width="257" height="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Confirmed"/>
+                                <segment title="Change"/>
+                                <segment title="Trend"/>
+                            </segments>
+                            <connections>
+                                <action selector="sortControlAction:" destination="0tG-B6-7NE" eventType="valueChanged" id="t6c-lO-JAx"/>
+                            </connections>
+                        </segmentedControl>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="sortControlView" destination="f4h-0z-nIE" id="Gyo-fs-4Aj"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G7c-0l-LEG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2726" y="548"/>
+            <point key="canvasLocation" x="2724.6376811594205" y="547.76785714285711"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="AdS-Cp-as7">
@@ -576,6 +593,8 @@
         <segue reference="TuR-nz-Rnq"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="doc.plaintext" catalog="system" width="115" height="128"/>
         <image name="location.circle" catalog="system" width="128" height="121"/>
+        <image name="table" catalog="system" width="128" height="93"/>
     </resources>
 </document>

@@ -14,7 +14,7 @@ class PickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
     @IBOutlet weak var statePicker: UIPickerView!
     @IBOutlet weak var rightBarButtonOutlet: UIBarButtonItem!
     
-
+    
     override func viewDidLoad() {
         
         self.pickerData = self.loadData(userSelection: userSelection)
@@ -59,8 +59,8 @@ class PickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
         
         if segue.identifier == "goToUIView"{
             
-           // let barViewControllers = segue.destination as! UITabBarController
-           // let destinationVC = barViewControllers.viewControllers![0] as! UIDataView
+            // let barViewControllers = segue.destination as! UITabBarController
+            // let destinationVC = barViewControllers.viewControllers![0] as! UIDataView
             let destinationVC = segue.destination as! UIDataView
             if(userInputfromPicker == " " || userInputfromPicker == ""){
                 destinationVC.userInputPicker = "Texas"
@@ -111,7 +111,13 @@ class PickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
             }
             States = States.removing(suffix: "")
             States = States.removing(suffix: " ")
+            
             Unique_States = Array(Set(States.removing(suffix: "Province_State")).sorted())
+            Unique_States = Unique_States.filter { $0 != "American Samoa" }
+            Unique_States = Unique_States.filter { $0 != "Province_State" }
+            Unique_States = Unique_States.filter { $0 != "Grand Princess" }
+            Unique_States = Unique_States.filter { $0 != "Diamond Princess" }
+            
             return Unique_States
             
         default:
@@ -127,7 +133,7 @@ class PickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
             defaults.set(worldConfirmedCases, forKey: "worldConfirmedCases")
         }
         else{
-           // var USAConfirmedCases = Array(repeating: 0.0, count: 1000)
+            // var USAConfirmedCases = Array(repeating: 0.0, count: 1000)
             let USAConfirmedCases =  calculations.getConfirmedCases(rawCSV: defaults.string(forKey: "USACSV") ?? "world", userInput: userInputfromPicker, placeColumn: 6)
             defaults.set(USAConfirmedCases, forKey: "USAConfirmedCases")
         }

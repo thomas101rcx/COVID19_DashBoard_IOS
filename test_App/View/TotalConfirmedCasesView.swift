@@ -22,7 +22,7 @@ class TotalConfirmedCasesView: UIViewController, ChartViewDelegate {
     var list = ""
     var totalConfirmedCasesToday = 0.0
     var data = LineChartData()
-
+    
     func generateGraph(){
         let defaults = UserDefaults.standard
         switch userSelection {
@@ -36,16 +36,16 @@ class TotalConfirmedCasesView: UIViewController, ChartViewDelegate {
             list = defaults.string(forKey : "worldCSV") ?? "world"
             
             confirmed_cases = defaults.object(forKey: "worldConfirmedCases") as! [Double]
-
             
-           // totalConfirmedCasesToday = confirmed_cases.last ?? 0
+            
+            // totalConfirmedCasesToday = confirmed_cases.last ?? 0
             
             self.appendData()
             
         case "USA":
             list = defaults.string(forKey : "USACSV") ?? "world"
             confirmed_cases = defaults.object(forKey: "USAConfirmedCases") as! [Double]
-
+            
             
             self.appendData()
             
@@ -64,7 +64,7 @@ class TotalConfirmedCasesView: UIViewController, ChartViewDelegate {
             confirmedCasesEntry.append(confirmedCasesData)
         }
         totalConfirmedCasesToday = confirmed_cases.last ?? 0
-
+        
         
         
     }

@@ -21,7 +21,7 @@ class TrendGraphView: UIViewController, ChartViewDelegate {
     var data = LineChartData()
     var tMinus14DaysData = 0
     let networkManager = NetworkManager()
-
+    
     
     func generateGraph() {
         let defaults = UserDefaults.standard
@@ -41,7 +41,7 @@ class TrendGraphView: UIViewController, ChartViewDelegate {
             list = defaults.string(forKey : "USACSV") ?? "world"
             
             confirmed_cases = defaults.object(forKey: "USAConfirmedCases") as! [Double]
-
+            
             self.appendData()
             
         default:
@@ -52,7 +52,7 @@ class TrendGraphView: UIViewController, ChartViewDelegate {
     func appendData(){
         
         //Append data to ChartDataEntry
-
+        
         for i in 0...confirmed_cases.count-15{
             if i < 14 {
                 weekly_new_cases[i] = 0

@@ -25,9 +25,9 @@ class RankingSelection: UIViewController{
     }
     
     @IBAction func goToWorldRanking(_ sender: Any) {
-         userSelection = "World"
+        userSelection = "World"
         self.performSegue(withIdentifier : "goToRank", sender : self)
-       
+        
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToRank"{
@@ -35,7 +35,6 @@ class RankingSelection: UIViewController{
             // let barViewControllers = segue.destination as! UITabBarController
             // let destinationVC = barViewControllers.viewControllers![0] as! UIDataView
             let destinationVC = segue.destination as! RankingView
-            
             destinationVC.userSelection = userSelection
             
         }

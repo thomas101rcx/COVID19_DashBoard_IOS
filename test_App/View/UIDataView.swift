@@ -18,7 +18,7 @@ class UIDataView: UIViewController {
     var worldList = ""
     var USAList = ""
     //var currentCountry = ""
-
+    
     @IBOutlet weak var rightBarButtonOutlet: UIBarButtonItem!
     
     @IBOutlet weak var stateLabel: UILabel!
@@ -43,7 +43,7 @@ class UIDataView: UIViewController {
         self.navigationItem.titleView = segmentControlGraph
         
         //self.tabBarController?.navigationItem.titleView = segmentControlGraph
-
+        
         self.firstGraphView.alpha = 0
         self.secondGraphView.alpha = 0
         self.thirdGraphView.alpha = 1
@@ -52,14 +52,10 @@ class UIDataView: UIViewController {
         self.dataLabelThree.alpha = 1
         
         super.viewDidLoad()
-
+        
     }
     
-
     
-    
-    
-
     @IBAction func showGraphs(_ sender: UISegmentedControl) {
         
         self.dataLabelOne.alpha = 1
@@ -71,7 +67,7 @@ class UIDataView: UIViewController {
                 self.firstGraphView.alpha = 0
                 self.secondGraphView.alpha = 0
                 self.thirdGraphView.alpha = 1
-
+                
             })
         } else if(sender.selectedSegmentIndex == 1){
             UIView.animate(withDuration: 0.5, animations: {
@@ -87,12 +83,12 @@ class UIDataView: UIViewController {
             })
         }
     }
-
+    
     @IBAction func rightBarButtonAction(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: {})
         self.navigationController?.popToRootViewController(animated: true)
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let defaults = UserDefaults.standard
         if segue.identifier == "goToThird"{
@@ -100,10 +96,10 @@ class UIDataView: UIViewController {
             destinationVC.userInput = userInputPicker
             destinationVC.userSelection = userSelection
             destinationVC.generateGraph()
-     
+            
             let displayText = "Past 14 Days Accumlated Cases : " + String(destinationVC.tMinus14DaysData)
             defaults.set(displayText, forKey: "dataLabelThree")
-
+            
             dataLabelThree.text = displayText
         }
         else if segue.identifier == "goToSecond"{
@@ -123,7 +119,7 @@ class UIDataView: UIViewController {
             destinationVC.generateGraph()
             let displayText = "Newly Confirmed Cases Today : " + String(Int(destinationVC.dailyIncreasedCasesToday))
             defaults.set(displayText, forKey: "dataLabelTwo")
-
+            
             dataLabelTwo.text = displayText
         }else{
             
