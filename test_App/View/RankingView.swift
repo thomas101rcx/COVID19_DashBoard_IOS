@@ -72,18 +72,54 @@ class RankingView: UITableViewController {
                      ... repeat for all other fields in the sorting
                      */
                 else { // All other fields are tied, break ties by last name
+                    return $0.totalConfirmed < $1.totalConfirmed
+                }
+                
+            }
+            // print(countries)
+            
+            self.tableView.reloadData()
+            }
+        case 1: do {
+            countries.sort {
+                if $0.dailyIncrease != $1.dailyIncrease { // first, compare by last names
+                    return $0.dailyIncrease > $1.dailyIncrease
+                }
+                    /*  last names are the same, break ties by foo
+                     else if $0.foo != $1.foo {
+                     return $0.foo < $1.foo
+                     }
+                     ... repeat for all other fields in the sorting
+                     */
+                else { // All other fields are tied, break ties by last name
                     return $0.dailyIncrease < $1.dailyIncrease
                 }
                 
             }
-            print(countries)
+            // print(countries)
             
-            
-            }
-        case 1: do {
+            self.tableView.reloadData()
             
             }
         case 2: do {
+            countries.sort {
+                if $0.Trend != $1.Trend { // first, compare by last names
+                    return $0.Trend > $1.Trend
+                }
+                    /*  last names are the same, break ties by foo
+                     else if $0.foo != $1.foo {
+                     return $0.foo < $1.foo
+                     }
+                     ... repeat for all other fields in the sorting
+                     */
+                else { // All other fields are tied, break ties by last name
+                    return $0.Trend < $1.Trend
+                }
+                
+            }
+            // print(countries)
+            
+            self.tableView.reloadData()
             
             }
         default: break;
@@ -100,6 +136,7 @@ class RankingView: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return countries.count
     }
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CountryCell", for: indexPath)
