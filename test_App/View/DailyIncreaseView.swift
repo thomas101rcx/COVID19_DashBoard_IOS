@@ -34,6 +34,7 @@ class DailyIncreaseView: UIViewController{
             }
             
             confirmed_cases = defaults.object(forKey: "worldConfirmedCases") as! [Double]
+           
             
             self.appendData()
             
@@ -43,6 +44,7 @@ class DailyIncreaseView: UIViewController{
             
             
             confirmed_cases = defaults.object(forKey: "USAConfirmedCases") as! [Double]
+             print(confirmed_cases)
             
             
             self.appendData()

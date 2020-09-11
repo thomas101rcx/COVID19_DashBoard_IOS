@@ -15,9 +15,6 @@ class UIDataView: UIViewController {
     @IBOutlet weak var segmentControlGraph: UISegmentedControl!
     var userInputPicker = ""
     var userSelection = ""
-    var worldList = ""
-    var USAList = ""
-    //var currentCountry = ""
     
     @IBOutlet weak var rightBarButtonOutlet: UIBarButtonItem!
     

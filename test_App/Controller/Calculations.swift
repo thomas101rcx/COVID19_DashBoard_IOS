@@ -11,8 +11,6 @@ import UIKit
 class Calculations {
     var confirmed_cases = Array(repeating: 0.0, count: 1000)
     let defaults = UserDefaults.standard
-    var dailyIncreasedCasesArray : [Double] = []
-    var weeklyNewCasesArray  = Array(repeating: 0.0, count: 1000)
     var todayConfirmedCasesArray : [Double] = []
     func getConfirmedCases(rawCSV : String, userInput : String, placeColumn : Int) -> [Double]{
         
@@ -27,7 +25,6 @@ class Calculations {
                     for column in 0...rowArray.count-14{
                         confirmed_cases[column] = confirmed_cases[column] + (Double(rowArray[column+13]/*.filter{ !" \n\t\r".contains($0) }*/) ?? 0)
                     }
-                    break
                 }
             }
         }
@@ -112,7 +109,7 @@ class Calculations {
         return (Int(todayConfirmedCases),Int(dailyIncreasedCasesToday),tMinus14DaysData)
     }
     
-
+    
     
     
 }

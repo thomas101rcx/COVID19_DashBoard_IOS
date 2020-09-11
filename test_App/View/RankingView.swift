@@ -14,7 +14,6 @@ struct Country {
     var totalConfirmed : Int
     var dailyIncrease : Int
     var Trend : Int
-    //  var locationData : [Int]
 }
 
 class RankingView: UITableViewController {
@@ -117,12 +116,32 @@ class RankingView: UITableViewController {
                 }
                 
             }
-            // print(countries)
             
             self.tableView.reloadData()
             
             }
-        default: break;
+        default: do{
+            countries.sort {
+                if $0.locationName != $1.locationName { // first, compare by last names
+                    return $0.locationName > $1.locationName
+                }
+                    /*  last names are the same, break ties by foo
+                     else if $0.foo != $1.foo {
+                     return $0.foo < $1.foo
+                     }
+                     ... repeat for all other fields in the sorting
+                     */
+                else { // All other fields are tied, break ties by last name
+                    return $0.locationName < $1.locationName
+                }
+                
+            }
+            
+            self.tableView.reloadData()
+            
+            
+            }
+            
         }
         
     }
