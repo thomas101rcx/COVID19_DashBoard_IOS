@@ -29,22 +29,24 @@ class RankingView: UITableViewController {
         let locationList = pickerView.loadData(userSelection: userSelection)
         // var locationData : [Int]
         let defaults = UserDefaults.standard
-        let worldCSV = defaults.string(forKey : "worldCSV") ?? "world"
+        var worldCSV = defaults.string(forKey : "worldCSV") ?? "world"
         let USACSV = defaults.string(forKey : "USACSVRanking") ?? "USA"
         
         if(userSelection == "World"){
+
             for location in 0...locationList.count-1{
                 let (confirmedCases, dailyIncreasedCases, tmins14Data)  = calculations.getRankingData(rawCSV: worldCSV , userInput: locationList[location], placeColumn: 1)
                 countries.append(Country(locationName: locationList[location], totalConfirmed: confirmedCases, dailyIncrease: dailyIncreasedCases, Trend: tmins14Data))
-                
+                let endofString = worldCSV.firstIndex(of: "\n") ?? worldCSV.endIndex
+                let deleteString = worldCSV[...endofString]
+                worldCSV = worldCSV.replacingOccurrences(of: deleteString, with: "")
+            
             }
         }
         else{
             for location in 0...locationList.count-1{
                 let (confirmedCases, dailyIncreasedCases, tmins14Data) = calculations.getConfirmedCasesUSA(rawCSV: USACSV)
                 countries.append(Country(locationName: locationList[location], totalConfirmed: Int(confirmedCases[location]), dailyIncrease: Int(dailyIncreasedCases[location]), Trend: Int(tmins14Data[location])))
-                
-                
             }
             
         }
@@ -59,10 +61,10 @@ class RankingView: UITableViewController {
     
     @IBAction func sortControlAction(_ sender: UISegmentedControl) {
         switch sortControlView.selectedSegmentIndex {
-        case 0:do{
+        case 0: do {
             countries.sort {
-                if $0.totalConfirmed != $1.totalConfirmed { // first, compare by last names
-                    return $0.totalConfirmed > $1.totalConfirmed
+                if $0.locationName != $1.locationName { // first, compare by last names
+                    return $0.locationName < $1.locationName
                 }
                     /*  last names are the same, break ties by foo
                      else if $0.foo != $1.foo {
@@ -71,6 +73,21 @@ class RankingView: UITableViewController {
                      ... repeat for all other fields in the sorting
                      */
                 else { // All other fields are tied, break ties by last name
+                    return $0.locationName > $1.locationName
+                }
+                
+            }
+            
+            self.tableView.reloadData()
+            
+            }
+        case 1:do{
+            countries.sort {
+                if $0.totalConfirmed != $1.totalConfirmed {
+                    return $0.totalConfirmed > $1.totalConfirmed
+                }
+                  
+                else {
                     return $0.totalConfirmed < $1.totalConfirmed
                 }
                 
@@ -79,18 +96,13 @@ class RankingView: UITableViewController {
             
             self.tableView.reloadData()
             }
-        case 1: do {
+        case 2: do {
             countries.sort {
-                if $0.dailyIncrease != $1.dailyIncrease { // first, compare by last names
+                if $0.dailyIncrease != $1.dailyIncrease {
                     return $0.dailyIncrease > $1.dailyIncrease
                 }
-                    /*  last names are the same, break ties by foo
-                     else if $0.foo != $1.foo {
-                     return $0.foo < $1.foo
-                     }
-                     ... repeat for all other fields in the sorting
-                     */
-                else { // All other fields are tied, break ties by last name
+                   
+                else {
                     return $0.dailyIncrease < $1.dailyIncrease
                 }
                 
@@ -100,18 +112,13 @@ class RankingView: UITableViewController {
             self.tableView.reloadData()
             
             }
-        case 2: do {
+        case 3: do {
             countries.sort {
-                if $0.Trend != $1.Trend { // first, compare by last names
+                if $0.Trend != $1.Trend {
                     return $0.Trend > $1.Trend
                 }
-                    /*  last names are the same, break ties by foo
-                     else if $0.foo != $1.foo {
-                     return $0.foo < $1.foo
-                     }
-                     ... repeat for all other fields in the sorting
-                     */
-                else { // All other fields are tied, break ties by last name
+                   
+                else {
                     return $0.Trend < $1.Trend
                 }
                 
@@ -122,16 +129,11 @@ class RankingView: UITableViewController {
             }
         default: do{
             countries.sort {
-                if $0.locationName != $1.locationName { // first, compare by last names
+                if $0.locationName != $1.locationName {
                     return $0.locationName > $1.locationName
                 }
-                    /*  last names are the same, break ties by foo
-                     else if $0.foo != $1.foo {
-                     return $0.foo < $1.foo
-                     }
-                     ... repeat for all other fields in the sorting
-                     */
-                else { // All other fields are tied, break ties by last name
+
+                else {
                     return $0.locationName < $1.locationName
                 }
                 
@@ -153,6 +155,7 @@ class RankingView: UITableViewController {
     //    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return countries.count
     }
     

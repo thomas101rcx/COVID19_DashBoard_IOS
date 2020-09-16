@@ -11,5 +11,5 @@
 // 1-1 apply MVC to code and separate the functions part with the view loaders // Done
 // 2. Rename some of the variables and simplify the code  //Done
 // 3. Implement background activity to prefetch stored location's covid info
-// 4. Add ranking to 
+// 4. Add ranking // Done
 

@@ -62,7 +62,7 @@ class DailyIncreaseView: UIViewController{
     func appendData(){
         
         // Daily increased casess
-        for i in (1..<confirmed_cases.count-1){
+        for i in (1..<confirmed_cases.count){
             dailyIncreasedCases.append(confirmed_cases[i] - confirmed_cases[i-1])
             let value = ChartDataEntry(x: Double(i) ,y:confirmed_cases[i] - confirmed_cases[i-1])
             dailyIncreEntry.append(value)

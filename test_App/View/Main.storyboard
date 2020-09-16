@@ -529,9 +529,10 @@
                     <navigationItem key="navigationItem" id="B5Z-cU-9Xk">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="f4h-0z-nIE">
-                            <rect key="frame" x="78.5" y="5.5" width="257" height="33"/>
+                            <rect key="frame" x="50" y="5.5" width="339" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
+                                <segment title="A-Z"/>
                                 <segment title="Confirmed"/>
                                 <segment title="Change"/>
                                 <segment title="Trend"/>

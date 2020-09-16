@@ -20,12 +20,14 @@ class EntrySelection: UIViewController{
     @IBOutlet weak var storedLocationDataOne: UILabel!
     @IBOutlet weak var storedLocationName: UILabel!
     var networkManager = NetworkManager()
-    let defaults = UserDefaults.standard
+    var notificationManager = LocalNotificationManager()
     
+    let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
         getLocation()
+        setNotification()
         networkManager.setUSACSV()
         networkManager.setWorldCSV()
         networkManager.getUSACSVRanking()
@@ -55,6 +57,11 @@ class EntrySelection: UIViewController{
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
         locationManager.requestLocation()
+    }
+    func setNotification() -> Void {
+        notificationManager.requestPermission()
+     //   notificationManager.addNotification(title: "Open COVID-19 App", dateTime: DateComponents(minute: 01))
+        notificationManager.scheduleNotifications()
     }
     
     
