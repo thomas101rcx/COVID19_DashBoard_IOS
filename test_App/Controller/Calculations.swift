@@ -11,8 +11,6 @@ import UIKit
 class Calculations {
     var confirmed_cases = Array(repeating: 0.0, count: 1000)
     let defaults = UserDefaults.standard
-    var dailyIncreasedCasesArray : [Double] = []
-    var weeklyNewCasesArray  = Array(repeating: 0.0, count: 1000)
     var todayConfirmedCasesArray : [Double] = []
     func getConfirmedCases(rawCSV : String, userInput : String, placeColumn : Int) -> [Double]{
         
@@ -27,7 +25,6 @@ class Calculations {
                     for column in 0...rowArray.count-14{
                         confirmed_cases[column] = confirmed_cases[column] + (Double(rowArray[column+13]/*.filter{ !" \n\t\r".contains($0) }*/) ?? 0)
                     }
-                    break
                 }
             }
         }
@@ -74,26 +71,47 @@ class Calculations {
     func getConfirmedCasesWorld(rawCSV : String,userInput : String) -> [Double] {
         
         var worldConfirmedCases : [Double] = []
+        var worldConfirmedCasesSpecial = Array(repeating: 0.0, count: 40)
         
         let rawCSV = rawCSV.components(separatedBy: "\n")
-        
         for row in rawCSV{
             if row != ""{
                 let rowArray = row.components(separatedBy: ",")
-                if(rowArray[1].contains(userInput)){
-                    for column in stride(from: rowArray.count-1, to: rowArray.count-21, by: -1) {
-                        //print(rowArray[column])
-                        worldConfirmedCases.append(Double(rowArray[column]) ?? 0.0)
-                        //worldConfirmedCases.append(Double(rowArray[column]))
+                if(rowArray[1].contains(userInput)) {
+                    
+                    if userInput == "China" || userInput == "Canada" || userInput == "Australia" || userInput == "Denmark" || userInput == "France" || userInput == "Netherlands" || userInput == "United Kingdom"{
+                        var count = 0
+                        for column in stride(from: rowArray.count-1, to: rowArray.count-21, by: -1) {
+                            worldConfirmedCasesSpecial[count] = worldConfirmedCasesSpecial[count] +  (Double(rowArray[column]) ?? 0.0)
+                            count  = count + 1
+                            
+                        }
                     }
-                    break
+                    else{
+                        for column in stride(from: rowArray.count-1, to: rowArray.count-21, by: -1) {
+                            worldConfirmedCases.append(Double(rowArray[column]) ?? 0.0)
+                            
+                        }
+                        break
+                        
+                    }
+                    
                 }
+                
+                
+                
             }
         }
-        
+        worldConfirmedCasesSpecial = worldConfirmedCasesSpecial.removing(suffix: 0)
+        worldConfirmedCasesSpecial.reverse()
         worldConfirmedCases.reverse()
+                
+        if worldConfirmedCases.count != 0{
+            return worldConfirmedCases
+        }else{
+            return worldConfirmedCasesSpecial
+        }
         
-        return worldConfirmedCases
     }
     
     
@@ -112,7 +130,7 @@ class Calculations {
         return (Int(todayConfirmedCases),Int(dailyIncreasedCasesToday),tMinus14DaysData)
     }
     
-
+    
     
     
 }

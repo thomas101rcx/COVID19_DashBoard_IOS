@@ -29,6 +29,7 @@ class RankingSelection: UIViewController{
         self.performSegue(withIdentifier : "goToRank", sender : self)
         
     }
+   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToRank"{
             

@@ -37,9 +37,7 @@ class TotalConfirmedCasesView: UIViewController, ChartViewDelegate {
             
             confirmed_cases = defaults.object(forKey: "worldConfirmedCases") as! [Double]
             
-            
-            // totalConfirmedCasesToday = confirmed_cases.last ?? 0
-            
+                    
             self.appendData()
             
         case "USA":

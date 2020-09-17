@@ -7,7 +7,6 @@
 //  Copyright © 2020 Thomas Lai. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class NetworkManager {

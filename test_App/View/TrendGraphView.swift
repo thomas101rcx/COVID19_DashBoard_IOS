@@ -20,7 +20,6 @@ class TrendGraphView: UIViewController, ChartViewDelegate {
     var list = ""
     var data = LineChartData()
     var tMinus14DaysData = 0
-    let networkManager = NetworkManager()
     
     
     func generateGraph() {

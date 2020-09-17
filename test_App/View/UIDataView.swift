@@ -15,9 +15,6 @@ class UIDataView: UIViewController {
     @IBOutlet weak var segmentControlGraph: UISegmentedControl!
     var userInputPicker = ""
     var userSelection = ""
-    var worldList = ""
-    var USAList = ""
-    //var currentCountry = ""
     
     @IBOutlet weak var rightBarButtonOutlet: UIBarButtonItem!
     
@@ -31,6 +28,7 @@ class UIDataView: UIViewController {
     static let toFirstView = "goToFirst"
     static let toSecondView = "goToSecond"
     static let toThirdView = "goToThird"
+    
     
     override func viewDidLoad() {
         
