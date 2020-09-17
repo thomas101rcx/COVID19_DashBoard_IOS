@@ -15,15 +15,10 @@ class UIDataView: UIViewController {
     @IBOutlet weak var segmentControlGraph: UISegmentedControl!
     var userInputPicker = ""
     var userSelection = ""
-    
     @IBOutlet weak var rightBarButtonOutlet: UIBarButtonItem!
-    
     @IBOutlet weak var stateLabel: UILabel!
-    
     @IBOutlet weak var dataLabelOne: UILabel!
-    
     @IBOutlet weak var dataLabelTwo: UILabel!
-    
     @IBOutlet weak var dataLabelThree: UILabel!
     static let toFirstView = "goToFirst"
     static let toSecondView = "goToSecond"
