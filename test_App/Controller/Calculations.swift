@@ -84,7 +84,6 @@ class Calculations {
                         for column in stride(from: rowArray.count-1, to: rowArray.count-21, by: -1) {
                             worldConfirmedCasesSpecial[count] = worldConfirmedCasesSpecial[count] +  (Double(rowArray[column]) ?? 0.0)
                             count  = count + 1
-                            
                         }
                     }
                     else{
@@ -105,7 +104,7 @@ class Calculations {
         worldConfirmedCasesSpecial = worldConfirmedCasesSpecial.removing(suffix: 0)
         worldConfirmedCasesSpecial.reverse()
         worldConfirmedCases.reverse()
-                
+        
         if worldConfirmedCases.count != 0{
             return worldConfirmedCases
         }else{
