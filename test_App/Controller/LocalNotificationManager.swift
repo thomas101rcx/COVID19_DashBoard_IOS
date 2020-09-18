@@ -4,7 +4,7 @@
 //
 //  Created by Thomas Lai on 9/15/20.
 //  Copyright © 2020 Thomas Lai. All rights reserved.
-//
+//  Send notification to user
 
 import UserNotifications
 import UIKit

@@ -6,7 +6,5 @@ target 'test_App' do
   use_frameworks!
 
   pod 'Charts'
-  pod "TinyConstraints"
-  pod 'CorePlot'
 
 end

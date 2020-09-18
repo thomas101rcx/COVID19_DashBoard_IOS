@@ -1,4 +1,2 @@
 ${PODS_ROOT}/Target Support Files/Pods-test_App/Pods-test_App-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Charts/Charts.framework
-${BUILT_PRODUCTS_DIR}/CorePlot/CorePlot.framework
-${BUILT_PRODUCTS_DIR}/TinyConstraints/TinyConstraints.framework

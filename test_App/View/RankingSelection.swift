@@ -4,9 +4,8 @@
 //
 //  Created by Thomas Lai on 8/29/20.
 //  Copyright © 2020 Thomas Lai. All rights reserved.
-//
+//  View controller for selecting world or USA covid-19 data ranking
 
-import Foundation
 import UIKit
 
 class RankingSelection: UIViewController{
@@ -14,6 +13,7 @@ class RankingSelection: UIViewController{
     @IBOutlet weak var USARanking: UIButton!
     @IBOutlet weak var worldRanking: UIButton!
     var userSelection = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

@@ -4,7 +4,7 @@
 //
 //  Created by Thomas Lai on 8/29/20.
 //  Copyright © 2020 Thomas Lai. All rights reserved.
-//
+//  
 
 
 import UIKit
@@ -18,30 +18,50 @@ struct Country {
 
 class RankingView: UITableViewController {
     
+    @IBOutlet weak var sortControlView: UISegmentedControl!
+    
     var pickerView = PickerView()
     let calculations = Calculations()
     var userSelection = ""
-    var countries :[Country] = []
+    var countries : [Country] = []
+    var rowSelected = ""
     
-    @IBOutlet weak var sortControlView: UISegmentedControl!
     
     func prepareData(){
         let locationList = pickerView.loadData(userSelection: userSelection)
-        // var locationData : [Int]
         let defaults = UserDefaults.standard
         var worldCSV = defaults.string(forKey : "worldCSV") ?? "world"
         let USACSV = defaults.string(forKey : "USACSVRanking") ?? "USA"
         
         if(userSelection == "World"){
-
+            let startTime = CFAbsoluteTimeGetCurrent()
+            var endofStrings = ""
+            if let range = worldCSV.range(of: "\n,"){
+                endofStrings = String(worldCSV[...range.lowerBound])
+            }
+            worldCSV = worldCSV.replacingOccurrences(of: endofStrings, with: "")
             for location in 0...locationList.count-1{
+                
                 let (confirmedCases, dailyIncreasedCases, tmins14Data)  = calculations.getRankingData(rawCSV: worldCSV , userInput: locationList[location], placeColumn: 1)
                 countries.append(Country(locationName: locationList[location], totalConfirmed: confirmedCases, dailyIncrease: dailyIncreasedCases, Trend: tmins14Data))
-                let endofString = worldCSV.firstIndex(of: "\n") ?? worldCSV.endIndex
-                let deleteString = worldCSV[...endofString]
-                worldCSV = worldCSV.replacingOccurrences(of: deleteString, with: "")
-            
+                
+                var endofStrings = ""
+                if let range = worldCSV.range(of: "\n,"){
+                    endofStrings = String(worldCSV[...range.lowerBound])
+                    if (endofStrings.contains("China") || endofStrings.contains("Australia") || endofStrings.contains("France") || endofStrings.contains("Canada") || endofStrings.contains("Denmark") || endofStrings.contains("Netherlands") ||
+                            endofStrings.contains("United Kingdom")){
+                        let endofStringss = endofStrings.firstIndex(of: "\n") ?? endofStrings.endIndex
+                        let deleteString = endofStrings[...endofStringss]
+                        worldCSV = worldCSV.replacingOccurrences(of: deleteString, with: "")
+                    }
+                    else{
+                        worldCSV = worldCSV.replacingOccurrences(of: endofStrings, with: "")
+                    }
+                }
+                
             }
+            let timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
+            print(timeElapsed)
         }
         else{
             for location in 0...locationList.count-1{
@@ -66,12 +86,12 @@ class RankingView: UITableViewController {
                 if $0.locationName != $1.locationName { // first, compare by last names
                     return $0.locationName < $1.locationName
                 }
-                    /*  last names are the same, break ties by foo
-                     else if $0.foo != $1.foo {
-                     return $0.foo < $1.foo
-                     }
-                     ... repeat for all other fields in the sorting
-                     */
+                /*  last names are the same, break ties by foo
+                 else if $0.foo != $1.foo {
+                 return $0.foo < $1.foo
+                 }
+                 ... repeat for all other fields in the sorting
+                 */
                 else { // All other fields are tied, break ties by last name
                     return $0.locationName > $1.locationName
                 }
@@ -80,13 +100,13 @@ class RankingView: UITableViewController {
             
             self.tableView.reloadData()
             
-            }
+        }
         case 1:do{
             countries.sort {
                 if $0.totalConfirmed != $1.totalConfirmed {
                     return $0.totalConfirmed > $1.totalConfirmed
                 }
-                  
+                
                 else {
                     return $0.totalConfirmed < $1.totalConfirmed
                 }
@@ -95,13 +115,13 @@ class RankingView: UITableViewController {
             // print(countries)
             
             self.tableView.reloadData()
-            }
+        }
         case 2: do {
             countries.sort {
                 if $0.dailyIncrease != $1.dailyIncrease {
                     return $0.dailyIncrease > $1.dailyIncrease
                 }
-                   
+                
                 else {
                     return $0.dailyIncrease < $1.dailyIncrease
                 }
@@ -111,13 +131,13 @@ class RankingView: UITableViewController {
             
             self.tableView.reloadData()
             
-            }
+        }
         case 3: do {
             countries.sort {
                 if $0.Trend != $1.Trend {
                     return $0.Trend > $1.Trend
                 }
-                   
+                
                 else {
                     return $0.Trend < $1.Trend
                 }
@@ -126,13 +146,13 @@ class RankingView: UITableViewController {
             
             self.tableView.reloadData()
             
-            }
+        }
         default: do{
             countries.sort {
                 if $0.locationName != $1.locationName {
                     return $0.locationName > $1.locationName
                 }
-
+                
                 else {
                     return $0.locationName < $1.locationName
                 }
@@ -142,8 +162,8 @@ class RankingView: UITableViewController {
             self.tableView.reloadData()
             
             
-            }
-            
+        }
+        
         }
         
     }
@@ -169,10 +189,29 @@ class RankingView: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        rowSelected = countries[indexPath.row].locationName
+        self.performSegue(withIdentifier: "goToDataView", sender: self)
+    }
+    
+    
     //    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
     //        return "Section \(section)"
     //    }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        pickerView.userSelection = userSelection
+        pickerView.userInputfromPicker = rowSelected
+        pickerView.preLoadconfirmedCases()
+        if segue.identifier == "goToDataView" {
+            let destinationVC = segue.destination as! UIDataView
+            destinationVC.userInputPicker = rowSelected
+            destinationVC.userSelection = userSelection
+            
+        }
+    }
     func printTimeElapsedWhenRunningCode(title:String, operation:()->()) {
         let startTime = CFAbsoluteTimeGetCurrent()
         operation()

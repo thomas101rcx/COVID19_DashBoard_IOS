@@ -12,7 +12,6 @@ import Charts
 class TotalConfirmedCasesView: UIViewController, ChartViewDelegate {
     
     @IBOutlet weak var graphTitle: UILabel!
-    
     @IBOutlet weak var confirmedCasesView: LineChartView!
     var confirmed_cases : [Double] = []
     var confirmedCasesEntry = [ChartDataEntry]()

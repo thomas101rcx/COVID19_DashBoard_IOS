@@ -3,4 +3,86 @@
    uuid = "8D772BE8-F590-4F3E-A711-F92EDA28A084"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "16A4EB41-04FA-49D5-A6DE-62A2D9C5E8B6"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "test_App/View/RankingView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
+            landmarkName = "prepare(for:sender:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2526CA96-B81E-41CF-A116-17906B33E781"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "test_App/View/PickerView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "loadData(userSelection:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0D9C31F4-A2A8-4D39-ABD6-C942AE9202DB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "test_App/View/PickerView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
+            landmarkName = "loadData(userSelection:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0D9C31F4-A2A8-4D39-ABD6-C942AE9202DB - a13aa857114f2054"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "COVID_19.PickerView.loadData(userSelection: Swift.String) -&gt; Swift.Array&lt;Swift.String&gt;"
+                  moduleName = "COVID_19"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tl164/Desktop/IOS%20Development/test_App/test_App/View/PickerView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "116"
+                  endingLineNumber = "116"
+                  offsetFromSymbolStart = "7607">
+               </Location>
+               <Location
+                  uuid = "0D9C31F4-A2A8-4D39-ABD6-C942AE9202DB - 33869e7b198f2b85"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #4 (Swift.String) -&gt; Swift.Bool in COVID_19.PickerView.loadData(userSelection: Swift.String) -&gt; Swift.Array&lt;Swift.String&gt;"
+                  moduleName = "COVID_19"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tl164/Desktop/IOS%20Development/test_App/test_App/View/PickerView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "116"
+                  endingLineNumber = "116"
+                  offsetFromSymbolStart = "23">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

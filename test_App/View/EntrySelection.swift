@@ -4,24 +4,24 @@
 //
 //  Created by Thomas Lai on 7/5/20.
 //  Copyright © 2020 Thomas Lai. All rights reserved.
-//
+//  View controller for front page, selecting between USA/Wrold/Stored Location and Current GPS location
 
 import UIKit
 import CoreLocation
 
 class EntrySelection: UIViewController{
     
-    var userSelection = ""
-    var currentCountryGPS = ""
-    var locationManager = CLLocationManager()
-    lazy var geocoder = CLGeocoder()
+
     @IBOutlet weak var storedLocationDataThree: UILabel!
     @IBOutlet weak var storedLocationDataTwo: UILabel!
     @IBOutlet weak var storedLocationDataOne: UILabel!
     @IBOutlet weak var storedLocationName: UILabel!
     var networkManager = NetworkManager()
     var notificationManager = LocalNotificationManager()
-    
+    var locationManager = CLLocationManager()
+    var userSelection = ""
+    var currentCountryGPS = ""
+   
     let defaults = UserDefaults.standard
     
     override func viewDidLoad() {

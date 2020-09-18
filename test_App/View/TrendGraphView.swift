@@ -10,6 +10,7 @@ import UIKit
 import Charts
 
 class TrendGraphView: UIViewController, ChartViewDelegate {
+    
     @IBOutlet weak var graphTitle: UILabel!
     @IBOutlet weak var chtChart: LineChartView!
     var confirmed_cases : [Double] = []
