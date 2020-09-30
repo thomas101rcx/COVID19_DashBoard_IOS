@@ -34,7 +34,6 @@ class RankingView: UITableViewController {
         let USACSV = defaults.string(forKey : "USACSVRanking") ?? "USA"
         
         if(userSelection == "World"){
-            let startTime = CFAbsoluteTimeGetCurrent()
             var endofStrings = ""
             if let range = worldCSV.range(of: "\n,"){
                 endofStrings = String(worldCSV[...range.lowerBound])
@@ -60,8 +59,7 @@ class RankingView: UITableViewController {
                 }
                 
             }
-            let timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
-            print(timeElapsed)
+
         }
         else{
             for location in 0...locationList.count-1{
@@ -185,7 +183,6 @@ class RankingView: UITableViewController {
         let country = countries[indexPath.row]
         cell.textLabel?.text = country.locationName
         cell.detailTextLabel?.text = "\(country.totalConfirmed)" + " " + "\(country.dailyIncrease)" + " " + "\(country.Trend)"
-        
         return cell
     }
     

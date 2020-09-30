@@ -23,6 +23,8 @@ class UIDataView: UIViewController {
     static let toFirstView = "goToFirst"
     static let toSecondView = "goToSecond"
     static let toThirdView = "goToThird"
+    let defaults = UserDefaults.standard
+
     
     
     override func viewDidLoad() {
@@ -34,6 +36,8 @@ class UIDataView: UIViewController {
         segmentControlGraph.frame.size.height = 25
         segmentControlGraph.frame.size.width = 175
         self.navigationItem.titleView = segmentControlGraph
+        defaults.setValue(userSelection, forKey: "userSelection")
+        defaults.setValue(userInputPicker, forKey: "userInputPicker")
         
         //self.tabBarController?.navigationItem.titleView = segmentControlGraph
         
@@ -83,7 +87,6 @@ class UIDataView: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let defaults = UserDefaults.standard
         if segue.identifier == "goToThird"{
             let destinationVC = segue.destination as! TrendGraphView
             destinationVC.userInput = userInputPicker

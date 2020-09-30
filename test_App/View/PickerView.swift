@@ -14,7 +14,7 @@ class PickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
     var Unique_Country : [String] = [String]()
     let defaults = UserDefaults.standard
     
-
+    
     override func viewDidLoad() {
         
         self.pickerData = self.loadData(userSelection: userSelection)
@@ -81,15 +81,18 @@ class PickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
             let list = defaults.string(forKey : "worldCSV") ?? "world"
             
             let raw_csv = list.components(separatedBy: "\n")
-            
             // Extract State list
             for row in 0...raw_csv.count-1{
-                let rowArray = raw_csv[row].components(separatedBy: ",")
-                var Country_String = rowArray[1]
-                Country_String = Country_String.trimmingCharacters(in: .whitespacesAndNewlines)
-                Country_String = Country_String.replacingOccurrences(of: "\"", with: "")
-                Country_String = Country_String.replacingOccurrences(of: "*", with: "")
-                Country.append(Country_String)
+                if (raw_csv[row] != ""){
+                    let rowArray = raw_csv[row].components(separatedBy: ",")
+                    var Country_String = rowArray[1]
+                    Country_String = Country_String.trimmingCharacters(in: .whitespacesAndNewlines)
+                    Country_String = Country_String.replacingOccurrences(of: "\"", with: "")
+                    Country_String = Country_String.replacingOccurrences(of: "*", with: "")
+                    Country.append(Country_String)
+                }
+                
+                
             }
             Country = Country.removing(suffix: "")
             Country = Country.removing(suffix: " ")
