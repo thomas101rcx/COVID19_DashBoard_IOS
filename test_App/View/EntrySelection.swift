@@ -88,7 +88,7 @@ class EntrySelection: UIViewController{
         let confirmedCasesYesterday = confirmedArray[confirmedArray.count-2]
         let displayText1 = "Total Confirmed Cases : " + String(Int(confirmedCasesToday))
         let displayText2 = "Newly Confirmed Cases Today : " + String(Int(confirmedCasesToday-confirmedCasesYesterday))
-        let displayText3 = "14 Day Trend : " + String(Int(confirmedCasesToday - confirmedArray[confirmedArray.count-15]))
+        let displayText3 = "Past 14 Days Accumlated Cases and Trend: " + String(Int(confirmedCasesToday - confirmedArray[confirmedArray.count-15]))
         defaults.set(displayText1, forKey: "dataLabelOne")
         defaults.set(displayText2, forKey: "dataLabelTwo")
         defaults.set(displayText3, forKey: "dataLabelThree")
