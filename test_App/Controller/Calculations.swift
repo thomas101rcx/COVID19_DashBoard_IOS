@@ -98,8 +98,6 @@ class Calculations {
                     
                 }
                 
-                
-                
             }
         }
         worldConfirmedCasesSpecial = worldConfirmedCasesSpecial.removing(suffix: 0)

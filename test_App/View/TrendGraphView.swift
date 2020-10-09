@@ -78,7 +78,7 @@ class TrendGraphView: UIViewController, ChartViewDelegate {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        graphTitle.text = "COVID-19 Trend Graph" 
+        graphTitle.text = "Trend Graph" 
         let line1 = LineChartDataSet.init(entries: covid_trend_graph, label: "Past 14 days number of cases (Accumlated)")
         //Here we convert lineChartEntry to a LineChartDataSet
         line1.colors = [NSUIColor.blue] //Sets the colour to blue

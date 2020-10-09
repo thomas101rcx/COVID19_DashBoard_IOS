@@ -76,7 +76,7 @@ class DailyIncreaseView: UIViewController{
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        graphTitle.text = "COVID-19 Daily New Cases"
+        graphTitle.text = "Daily New Cases"
         let line2 = LineChartDataSet(entries: dailyIncreEntry, label: "Number of daily new cases") //Here we convert lineChartEntry to a LineChartDataSet
         line2.colors = [NSUIColor.gray] //Sets the colour to blue
         

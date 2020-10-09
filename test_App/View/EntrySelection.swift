@@ -17,6 +17,7 @@ class EntrySelection: UIViewController{
     @IBOutlet weak var storedLocationDataOne: UILabel!
     @IBOutlet weak var storedLocationName: UILabel!
     var networkManager = NetworkManager()
+    var calculations = Calculations()
     var notificationManager = LocalNotificationManager()
     var locationManager = CLLocationManager()
     var userSelection = ""
@@ -31,9 +32,12 @@ class EntrySelection: UIViewController{
         networkManager.setUSACSV()
         networkManager.setWorldCSV()
         networkManager.getUSACSVRanking()
+        self.refreshStoredData()
+       
         
     }
     override func viewWillAppear(_ animated: Bool) {
+        
         let country = defaults.string(forKey : "userSelection") ?? "USA"
         let state = defaults.string(forKey : "userInputPicker") ?? "Texas"
         var storedLocation = ""
@@ -49,7 +53,7 @@ class EntrySelection: UIViewController{
         storedLocationDataOne.text = defaults.string(forKey: "dataLabelOne") ?? "NoData"
         storedLocationDataTwo.text = defaults.string(forKey: "dataLabelTwo") ?? "NoData"
         storedLocationDataThree.text = defaults.string(forKey: "dataLabelThree") ?? "NoData"
-        super.viewWillAppear(true)
+        //super.viewWillAppear(true)
         
     }
     
@@ -62,6 +66,32 @@ class EntrySelection: UIViewController{
         notificationManager.requestPermission()
      //   notificationManager.addNotification(title: "Open COVID-19 App", dateTime: DateComponents(minute: 01))
         notificationManager.scheduleNotifications()
+    }
+    
+    func refreshStoredData(){
+        let country = defaults.string(forKey : "userSelection") ?? "USA"
+        let state = defaults.string(forKey : "userInputPicker") ?? "Texas"
+        var storedLocation = ""
+        var confirmedArray : [Double] = []
+        if country == "World"{
+            storedLocation = "Your stored location is : " + state
+             confirmedArray = calculations.getConfirmedCases(rawCSV: defaults.string(forKey: "worldCSV") ?? "NAH", userInput: state, placeColumn: 1)
+        }
+        else{
+            storedLocation = "Your stored location is : " + state + ", " + country
+            
+            confirmedArray = calculations.getConfirmedCases(rawCSV: defaults.string(forKey: "USACSV") ?? "NAH", userInput: state, placeColumn: 6)
+        }
+
+        storedLocationName.text =  storedLocation
+        let confirmedCasesToday = confirmedArray.last ?? 0.0
+        let confirmedCasesYesterday = confirmedArray[confirmedArray.count-2]
+        let displayText1 = "Total Confirmed Cases : " + String(Int(confirmedCasesToday))
+        let displayText2 = "Newly Confirmed Cases Today : " + String(Int(confirmedCasesToday-confirmedCasesYesterday))
+        let displayText3 = "14 Day Trend : " + String(Int(confirmedCasesToday - confirmedArray[confirmedArray.count-15]))
+        defaults.set(displayText1, forKey: "dataLabelOne")
+        defaults.set(displayText2, forKey: "dataLabelTwo")
+        defaults.set(displayText3, forKey: "dataLabelThree")
     }
     
     

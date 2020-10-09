@@ -47,18 +47,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <segmentedControl opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="oZP-x9-vo1">
-                                <rect key="frame" x="85" y="100" width="243" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
-                                    <segment title="Third"/>
-                                </segments>
-                                <connections>
-                                    <action selector="showGraphs:" destination="BYZ-38-t0r" eventType="valueChanged" id="UuK-bh-2bv"/>
-                                </connections>
-                            </segmentedControl>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="GnY-je-6cr">
                                 <rect key="frame" x="32" y="657" width="350" height="150"/>
                                 <subviews>
@@ -110,6 +98,19 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="QfY-dh-hKC"/>
                     <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="aVB-9h-Yj6">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="oZP-x9-vo1">
+                            <rect key="frame" x="108.5" y="6" width="197" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="First"/>
+                                <segment title="Second"/>
+                                <segment title="Third"/>
+                            </segments>
+                            <connections>
+                                <action selector="showGraphs:" destination="BYZ-38-t0r" eventType="valueChanged" id="UuK-bh-2bv"/>
+                            </connections>
+                        </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" title="Item" id="shW-Rk-G8S">
                             <connections>
                                 <action selector="rightBarButtonAction:" destination="BYZ-38-t0r" id="7GC-2t-Tub"/>
@@ -130,7 +131,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3400" y="-206"/>
+            <point key="canvasLocation" x="3365" y="-206"/>
         </scene>
         <!--Picker View-->
         <scene sceneID="tsH-H4-GLB">
@@ -197,7 +198,7 @@
                                 <color key="tintColor" systemColor="separatorColor"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="P2l-aI-cAU">
-                                <rect key="frame" x="0.0" y="12" width="369" height="28"/>
+                                <rect key="frame" x="-13" y="8" width="394" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <nil key="textColor"/>
@@ -231,7 +232,7 @@
                                 <color key="backgroundColor" systemColor="systemGrayColor"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="079-n1-Hhn">
-                                <rect key="frame" x="0.0" y="12" width="369" height="28"/>
+                                <rect key="frame" x="-23" y="12" width="414" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <nil key="textColor"/>
@@ -265,7 +266,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="r1F-am-ecc">
-                                <rect key="frame" x="0.0" y="12" width="369" height="28"/>
+                                <rect key="frame" x="-23" y="12" width="414" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <nil key="textColor"/>
@@ -487,7 +488,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qRH-Ua-Ze5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1719" y="548"/>
+            <point key="canvasLocation" x="1719" y="542"/>
         </scene>
         <!--Ranking View-->
         <scene sceneID="bww-B3-i1d">
@@ -551,7 +552,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G7c-0l-LEG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2724.6376811594205" y="547.76785714285711"/>
+            <point key="canvasLocation" x="2558" y="542"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="AdS-Cp-as7">
@@ -570,7 +571,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uct-NF-1Pb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="87" y="-206"/>
+            <point key="canvasLocation" x="65" y="-206"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="1b5-nZ-C2N">
@@ -590,11 +591,11 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k0j-Rz-uZT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="916" y="-206"/>
+            <point key="canvasLocation" x="903" y="-206"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="kcz-b2-YLP"/>
+        <segue reference="Ots-99-0Oh"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="doc.plaintext" catalog="system" width="115" height="128"/>
