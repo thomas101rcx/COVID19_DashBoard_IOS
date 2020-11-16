@@ -33,12 +33,18 @@ class RankingView: UITableViewController {
         var worldCSV = defaults.string(forKey : "worldCSV") ?? "world"
         let USACSV = defaults.string(forKey : "USACSVRanking") ?? "USA"
         
+        if worldCSV.contains("\r"){
+            worldCSV = worldCSV.replacingOccurrences(of: "\r", with: "")
+        }
+        
         if(userSelection == "World"){
             var endofStrings = ""
             if let range = worldCSV.range(of: "\n,"){
                 endofStrings = String(worldCSV[...range.lowerBound])
             }
             worldCSV = worldCSV.replacingOccurrences(of: endofStrings, with: "")
+            
+            //remove province and state
             for location in 0...locationList.count-1{
                 
                 let (confirmedCases, dailyIncreasedCases, tmins14Data)  = calculations.getRankingData(rawCSV: worldCSV , userInput: locationList[location], placeColumn: 1)
@@ -50,6 +56,7 @@ class RankingView: UITableViewController {
                     if (endofStrings.contains("China") || endofStrings.contains("Australia") || endofStrings.contains("France") || endofStrings.contains("Canada") || endofStrings.contains("Denmark") || endofStrings.contains("Netherlands") ||
                             endofStrings.contains("United Kingdom")){
                         let endofStringss = endofStrings.firstIndex(of: "\n") ?? endofStrings.endIndex
+                       
                         let deleteString = endofStrings[...endofStringss]
                         worldCSV = worldCSV.replacingOccurrences(of: deleteString, with: "")
                     }
@@ -59,9 +66,16 @@ class RankingView: UITableViewController {
                 }
                 
             }
-
+            
+            let worldSum = countries.lazy.map { $0.totalConfirmed }.reduce(0, +)
+            let worldChange = countries.lazy.map { $0.dailyIncrease }.reduce(0, +)
+            let worldTrend = countries.lazy.map { $0.Trend }.reduce(0, +)
+            
+            countries.append(Country(locationName: "World", totalConfirmed: worldSum, dailyIncrease: worldChange, Trend: worldTrend))
+            
         }
         else{
+            // USA
             for location in 0...locationList.count-1{
                 let (confirmedCases, dailyIncreasedCases, tmins14Data) = calculations.getConfirmedCasesUSA(rawCSV: USACSV)
                 countries.append(Country(locationName: locationList[location], totalConfirmed: Int(confirmedCases[location]), dailyIncrease: Int(dailyIncreasedCases[location]), Trend: Int(tmins14Data[location])))
@@ -72,14 +86,38 @@ class RankingView: UITableViewController {
         
     }
     
+    
     override func viewDidLoad() {
+        
+//        let longPress = UILongPressGestureRecognizer(target: self, action: Selector(("segmentLongPress:")))
+//       // longPress.delegate = self;
+//        self.sortControlView.addGestureRecognizer(longPress)
+//       longPress.minimumPressDuration = 1
+       
         prepareData()
     }
+//    
+//    func segmentLongPress(gestureRecognizer: UILongPressGestureRecognizer)
+//    {
+//        let p = gestureRecognizer.location(in: self.sortControlView)
+//        let index = Int(ceil( p.x/(self.sortControlView.frame.width/4))) - 1
+//        print(index)
+//        self.sortControlView.selectedSegmentIndex = index
+//        
+//    }
+    
     
     
     @IBAction func sortControlAction(_ sender: UISegmentedControl) {
+        
+       
+        
         switch sortControlView.selectedSegmentIndex {
         case 0: do {
+            //self.tap((_:))
+            // let longtap = UITapGestureRecognizer(target: self, action: #selector((handleLongTap)))
+            // sortControlView.segmen .addGestureRecognizer(longtap)
+            
             countries.sort {
                 if $0.locationName != $1.locationName { // first, compare by last names
                     return $0.locationName < $1.locationName
@@ -110,8 +148,6 @@ class RankingView: UITableViewController {
                 }
                 
             }
-            // print(countries)
-            
             self.tableView.reloadData()
         }
         case 2: do {
@@ -125,8 +161,6 @@ class RankingView: UITableViewController {
                 }
                 
             }
-            // print(countries)
-            
             self.tableView.reloadData()
             
         }

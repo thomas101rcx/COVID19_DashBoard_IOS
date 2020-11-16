@@ -27,11 +27,18 @@ class Calculations {
                         confirmed_cases[column] = confirmed_cases[column] + (Double(rowArray[column+13]/*.filter{ !" \n\t\r".contains($0) }*/) ?? 0)
                     }
                 }
+                else if (userInput == "World"){
+                    for column in 0...rowArray.count-14{
+                        confirmed_cases[column] = confirmed_cases[column] + (Double(rowArray[column+13]/*.filter{ !" \n\t\r".contains($0) }*/) ?? 0)
+                    }
+                }
             }
         }
         
         //remove trailing zeroes
         confirmed_cases = confirmed_cases.removing(suffix: 0)
+        confirmed_cases.remove(at: confirmed_cases.count-1)
+      //  print(confirmed_cases[confirmed_cases.count-1])
         
         return confirmed_cases
     }
@@ -114,6 +121,7 @@ class Calculations {
     
     
     func getRankingData(rawCSV : String, userInput : String, placeColumn : Int) -> (Int, Int, Int) {
+        
         
         todayConfirmedCasesArray = self.getConfirmedCasesWorld(rawCSV: rawCSV, userInput: userInput)
         

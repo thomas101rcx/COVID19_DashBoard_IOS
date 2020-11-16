@@ -68,7 +68,7 @@ class TotalConfirmedCasesView: UIViewController, ChartViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         graphTitle.text = "Total Confirmed Cases"
-        let line1 = LineChartDataSet(entries: confirmedCasesEntry, label: "Number of Total Cases")
+        let line1 = LineChartDataSet(entries: confirmedCasesEntry, label: "Number of total cases")
         //Here we convert lineChartEntry to a LineChartDataSet
         line1.colors = [NSUIColor.gray] //Sets the colour to blue
         

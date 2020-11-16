@@ -93,7 +93,7 @@ class UIDataView: UIViewController {
             destinationVC.userSelection = userSelection
             destinationVC.generateGraph()
             
-            let displayText = "Past 14 Days Accumlated Cases and Trend: " + String(destinationVC.tMinus14DaysData)
+            let displayText = "Newly Confirmed Cases in the past 14 days : " + String(destinationVC.tMinus14DaysData)
             defaults.set(displayText, forKey: "dataLabelThree")
             
             dataLabelThree.text = displayText
