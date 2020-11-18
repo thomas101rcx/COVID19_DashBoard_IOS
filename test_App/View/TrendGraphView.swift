@@ -83,7 +83,6 @@ class TrendGraphView: UIViewController, ChartViewDelegate {
         //Here we convert lineChartEntry to a LineChartDataSet
         line1.colors = [NSUIColor.blue] //Sets the colour to blue
        // var labels = "total Confirmed Cases"
-       // line1.label = "Giiiii "
         data = LineChartData(dataSets: [line1])
         trendChart.data = data
         //chtChart.leftAxis.axisMinimum = 0

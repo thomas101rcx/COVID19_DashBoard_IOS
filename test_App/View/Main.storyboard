@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="b2B-ri-pdE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="b2B-ri-pdE">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -42,8 +41,8 @@
                                 </connections>
                             </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="MKM-3G-4oE">
-                                <rect key="frame" x="180" y="123" width="54.5" height="27.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <rect key="frame" x="171.5" y="123" width="71" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -190,16 +189,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="473"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ifg-S1-eVJ" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="48" width="369" height="263"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ifg-S1-eVJ" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="20" y="105" width="374" height="263"/>
                                 <viewLayoutGuide key="safeArea" id="BIu-yL-ZI5"/>
                                 <color key="backgroundColor" systemColor="systemGray3Color"/>
                                 <color key="tintColor" systemColor="separatorColor"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="P2l-aI-cAU">
-                                <rect key="frame" x="-13" y="8" width="394" height="28"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="P2l-aI-cAU">
+                                <rect key="frame" x="180" y="35.5" width="54.5" height="27.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -207,6 +204,14 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="9mj-mX-lco"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="P2l-aI-cAU" firstAttribute="centerX" secondItem="Xrd-ng-MsO" secondAttribute="centerX" id="02L-20-ADp"/>
+                            <constraint firstItem="ifg-S1-eVJ" firstAttribute="centerY" secondItem="Xrd-ng-MsO" secondAttribute="centerY" id="IkE-84-q9o"/>
+                            <constraint firstItem="ifg-S1-eVJ" firstAttribute="top" secondItem="P2l-aI-cAU" secondAttribute="bottom" constant="42" id="KvX-19-FHt"/>
+                            <constraint firstItem="ifg-S1-eVJ" firstAttribute="trailing" secondItem="Xrd-ng-MsO" secondAttribute="trailingMargin" id="VPW-YV-4rT"/>
+                            <constraint firstItem="ifg-S1-eVJ" firstAttribute="top" secondItem="9mj-mX-lco" secondAttribute="top" constant="61" id="eLp-P7-0gd"/>
+                            <constraint firstItem="ifg-S1-eVJ" firstAttribute="leading" secondItem="Xrd-ng-MsO" secondAttribute="leadingMargin" id="rhV-KO-TA5"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="dailyIncrView" destination="ifg-S1-eVJ" id="HMU-NW-9gs"/>
@@ -225,15 +230,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="473"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view autoresizesSubviews="NO" clipsSubviews="YES" contentMode="center" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FVo-WJ-VNh" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="48" width="369" height="263"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view autoresizesSubviews="NO" clipsSubviews="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FVo-WJ-VNh" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="20" y="105" width="374" height="263"/>
                                 <viewLayoutGuide key="safeArea" id="XJK-zX-gZx"/>
                                 <color key="backgroundColor" systemColor="systemGrayColor"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="079-n1-Hhn">
-                                <rect key="frame" x="-23" y="12" width="414" height="28"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="079-n1-Hhn">
+                                <rect key="frame" x="180" y="35.5" width="54.5" height="27.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -241,6 +244,14 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4qA-4u-PEE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="079-n1-Hhn" firstAttribute="centerX" secondItem="weP-ED-pU0" secondAttribute="centerX" id="4yZ-SX-7uT"/>
+                            <constraint firstItem="FVo-WJ-VNh" firstAttribute="trailing" secondItem="weP-ED-pU0" secondAttribute="trailingMargin" id="NRm-MC-Tni"/>
+                            <constraint firstItem="FVo-WJ-VNh" firstAttribute="centerY" secondItem="weP-ED-pU0" secondAttribute="centerY" id="Z95-dz-8Dr"/>
+                            <constraint firstItem="FVo-WJ-VNh" firstAttribute="top" secondItem="4qA-4u-PEE" secondAttribute="top" constant="61" id="i6Z-d4-ePy"/>
+                            <constraint firstItem="FVo-WJ-VNh" firstAttribute="top" secondItem="079-n1-Hhn" secondAttribute="bottom" constant="42" id="okI-CG-lkj"/>
+                            <constraint firstItem="FVo-WJ-VNh" firstAttribute="leading" secondItem="weP-ED-pU0" secondAttribute="leadingMargin" id="yDb-X1-AJb"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="graphTitle" destination="079-n1-Hhn" id="Y1X-ic-3dC"/>
@@ -259,15 +270,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="473"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ph1-FZ-5GD" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="48" width="369" height="263"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ph1-FZ-5GD" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="20" y="105" width="374" height="263"/>
                                 <viewLayoutGuide key="safeArea" id="bF3-O4-9W3"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="r1F-am-ecc">
-                                <rect key="frame" x="-23" y="12" width="414" height="28"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="r1F-am-ecc">
+                                <rect key="frame" x="180" y="35.5" width="54.5" height="27.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -275,6 +284,15 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="w7G-7D-TL6"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Ph1-FZ-5GD" firstAttribute="top" secondItem="w7G-7D-TL6" secondAttribute="top" constant="61" id="DiL-O0-SqS"/>
+                            <constraint firstItem="Ph1-FZ-5GD" firstAttribute="leading" secondItem="IL7-zU-kWZ" secondAttribute="leadingMargin" id="GVq-8m-qjn"/>
+                            <constraint firstItem="r1F-am-ecc" firstAttribute="centerX" secondItem="IL7-zU-kWZ" secondAttribute="centerX" id="MeS-HZ-xP3"/>
+                            <constraint firstItem="Ph1-FZ-5GD" firstAttribute="top" secondItem="r1F-am-ecc" secondAttribute="bottom" constant="42" id="bQf-9I-M4J"/>
+                            <constraint firstItem="r1F-am-ecc" firstAttribute="centerX" secondItem="IL7-zU-kWZ" secondAttribute="centerX" id="jtG-Ns-X46"/>
+                            <constraint firstItem="Ph1-FZ-5GD" firstAttribute="centerX" secondItem="IL7-zU-kWZ" secondAttribute="centerX" id="mKb-OB-OHk"/>
+                            <constraint firstItem="Ph1-FZ-5GD" firstAttribute="centerY" secondItem="IL7-zU-kWZ" secondAttribute="centerY" id="qkx-HS-KAU"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="confirmedCasesView" destination="Ph1-FZ-5GD" id="dsu-1l-wiW"/>
@@ -362,7 +380,7 @@
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EKI-sK-qsj">
                                         <rect key="frame" x="144.5" y="279.5" width="41.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -371,19 +389,19 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Data Label One" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KLK-ky-aRE">
                                                 <rect key="frame" x="0.0" y="0.0" width="325" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Data Label Two" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TBe-8Q-OEN">
                                                 <rect key="frame" x="0.0" y="55" width="325" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Data Lable Three" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2co-aT-0Wd">
                                                 <rect key="frame" x="0.0" y="109.5" width="325" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -479,7 +497,7 @@
                             <constraint firstItem="cSx-ka-Wiv" firstAttribute="centerX" secondItem="3b0-JQ-oCu" secondAttribute="centerX" id="deO-7O-8eW"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Ranking" image="table" catalog="system" id="2XB-jP-L1p"/>
+                    <tabBarItem key="tabBarItem" title="Ranking" image="tablecells" catalog="system" id="2XB-jP-L1p"/>
                     <connections>
                         <outlet property="USARanking" destination="VA6-ey-Fsl" id="DaO-oh-8dv"/>
                         <outlet property="worldRanking" destination="Kgc-zb-ptI" id="8CQ-04-gZE"/>
@@ -600,7 +618,7 @@
     <resources>
         <image name="doc.plaintext" catalog="system" width="115" height="128"/>
         <image name="location.circle" catalog="system" width="128" height="121"/>
-        <image name="table" catalog="system" width="128" height="93"/>
+        <image name="tablecells" catalog="system" width="128" height="93"/>
         <systemColor name="separatorColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

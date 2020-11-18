@@ -17,6 +17,8 @@
 
 // 4. Add ranking //
 
+//Aggregate world data 
+
 
 
 // / / / / / / / / / / /  In Progress
@@ -28,7 +30,7 @@
 
 // Force touch for more sorting option A-Z and Z-A in Ranking
 
-//Aggregate world data 
+
 
 //https://stackoverflow.com/questions/30832544/handle-tap-on-same-segmented-button
 

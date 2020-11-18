@@ -38,7 +38,7 @@ class Calculations {
         //remove trailing zeroes
         confirmed_cases = confirmed_cases.removing(suffix: 0)
         confirmed_cases.remove(at: confirmed_cases.count-1)
-      //  print(confirmed_cases[confirmed_cases.count-1])
+        //  print(confirmed_cases[confirmed_cases.count-1])
         
         return confirmed_cases
     }

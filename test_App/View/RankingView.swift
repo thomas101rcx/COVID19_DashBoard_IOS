@@ -89,29 +89,15 @@ class RankingView: UITableViewController {
     
     override func viewDidLoad() {
         
-//        let longPress = UILongPressGestureRecognizer(target: self, action: Selector(("segmentLongPress:")))
-//       // longPress.delegate = self;
-//        self.sortControlView.addGestureRecognizer(longPress)
-//       longPress.minimumPressDuration = 1
+
        
         prepareData()
     }
-//    
-//    func segmentLongPress(gestureRecognizer: UILongPressGestureRecognizer)
-//    {
-//        let p = gestureRecognizer.location(in: self.sortControlView)
-//        let index = Int(ceil( p.x/(self.sortControlView.frame.width/4))) - 1
-//        print(index)
-//        self.sortControlView.selectedSegmentIndex = index
-//        
-//    }
-    
-    
+
     
     @IBAction func sortControlAction(_ sender: UISegmentedControl) {
         
        
-        
         switch sortControlView.selectedSegmentIndex {
         case 0: do {
             //self.tap((_:))
