@@ -1,4 +1,4 @@
-# COVID19_DashBoard_IOS
+# COVID19_DashBoard For IOS and MACOS
 This app is meant for anyone to track their country's latest covid-19 related statistical data.
 Feel free to clone the project to xcode and compile on your ios / mac os devices. 
 # Apple doesn't allow this app to be distributed on the app store due to its policy. # 
