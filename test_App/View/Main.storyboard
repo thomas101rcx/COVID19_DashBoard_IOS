@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="b2B-ri-pdE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="b2B-ri-pdE">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -73,15 +73,26 @@
                                     <constraint firstAttribute="width" constant="350" id="Xgx-wq-FtZ"/>
                                 </constraints>
                             </stackView>
+                            <containerView opaque="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yxy-Gw-gEX" userLabel="FourthGraphView">
+                                <rect key="frame" x="0.0" y="173" width="414" height="473"/>
+                                <viewLayoutGuide key="safeArea" id="yDf-T9-5Zj"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                <connections>
+                                    <segue destination="T8m-bZ-Z8s" kind="embed" identifier="goToFourth" id="KLK-4t-hlD"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Yxy-Gw-gEX" firstAttribute="trailing" secondItem="6OE-2e-s0P" secondAttribute="trailing" id="36d-rX-8d9"/>
                             <constraint firstItem="c8e-lh-mNi" firstAttribute="bottom" secondItem="GFA-xV-098" secondAttribute="bottom" id="AmL-L2-eD9"/>
                             <constraint firstItem="GnY-je-6cr" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="CZS-dN-4zS"/>
                             <constraint firstItem="c8e-lh-mNi" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="FXS-ay-pfn"/>
                             <constraint firstItem="6OE-2e-s0P" firstAttribute="top" secondItem="MKM-3G-4oE" secondAttribute="top" constant="50" id="FxJ-0U-973"/>
                             <constraint firstItem="c8e-lh-mNi" firstAttribute="leading" secondItem="GFA-xV-098" secondAttribute="leading" id="Gev-qe-fiC"/>
+                            <constraint firstItem="Yxy-Gw-gEX" firstAttribute="bottom" secondItem="6OE-2e-s0P" secondAttribute="bottom" id="Mne-vw-lme"/>
+                            <constraint firstItem="Yxy-Gw-gEX" firstAttribute="leading" secondItem="c8e-lh-mNi" secondAttribute="leading" id="QQZ-o8-x17"/>
                             <constraint firstItem="c8e-lh-mNi" firstAttribute="top" secondItem="6OE-2e-s0P" secondAttribute="top" id="S8E-cP-SC1"/>
                             <constraint firstItem="MKM-3G-4oE" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="TbT-dy-0sm"/>
                             <constraint firstItem="c8e-lh-mNi" firstAttribute="top" secondItem="GFA-xV-098" secondAttribute="top" id="Ulz-dL-Hnf"/>
@@ -91,6 +102,7 @@
                             <constraint firstItem="c8e-lh-mNi" firstAttribute="leading" secondItem="6OE-2e-s0P" secondAttribute="leading" id="jHX-lS-TL1"/>
                             <constraint firstItem="c8e-lh-mNi" firstAttribute="trailing" secondItem="GFA-xV-098" secondAttribute="trailing" id="kfx-Xp-Vjf"/>
                             <constraint firstItem="GnY-je-6cr" firstAttribute="top" secondItem="c8e-lh-mNi" secondAttribute="bottom" constant="11" id="llE-VR-TIp"/>
+                            <constraint firstItem="Yxy-Gw-gEX" firstAttribute="top" secondItem="GFA-xV-098" secondAttribute="top" id="oF0-Ja-6qN"/>
                             <constraint firstItem="c8e-lh-mNi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="uNn-9V-DbW"/>
                             <constraint firstItem="MKM-3G-4oE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="35" id="xDc-T1-w66"/>
                         </constraints>
@@ -99,12 +111,13 @@
                     <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="aVB-9h-Yj6">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="oZP-x9-vo1">
-                            <rect key="frame" x="80" y="5.5" width="254" height="33"/>
+                            <rect key="frame" x="50" y="5.5" width="304.5" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Confirmed"/>
                                 <segment title="Change"/>
                                 <segment title="Trend"/>
+                                <segment title="GF"/>
                             </segments>
                             <connections>
                                 <action selector="showGraphs:" destination="BYZ-38-t0r" eventType="valueChanged" id="UuK-bh-2bv"/>
@@ -121,6 +134,7 @@
                         <outlet property="dataLabelThree" destination="ez2-Py-abz" id="V1L-wH-qiE"/>
                         <outlet property="dataLabelTwo" destination="SUX-yd-vZR" id="ate-tO-t7k"/>
                         <outlet property="firstGraphView" destination="6OE-2e-s0P" id="kaZ-0H-Shb"/>
+                        <outlet property="fourthGraphView" destination="Yxy-Gw-gEX" id="udc-TF-Iqx"/>
                         <outlet property="rightBarButtonOutlet" destination="shW-Rk-G8S" id="Ncs-vs-4e9"/>
                         <outlet property="secondGraphView" destination="GFA-xV-098" id="Bmq-Zj-J3u"/>
                         <outlet property="segmentControlGraph" destination="oZP-x9-vo1" id="AfU-UI-Gqm"/>
@@ -611,9 +625,50 @@
             </objects>
             <point key="canvasLocation" x="903" y="-206"/>
         </scene>
+        <!--View-->
+        <scene sceneID="FfD-Mf-WPg">
+            <objects>
+                <viewController id="T8m-bZ-Z8s" customClass="GFView" customModule="COVID_19" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qqZ-pJ-z2c">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="473"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iJ4-tl-b9O" userLabel="GF View" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="20" y="105" width="374" height="263"/>
+                                <viewLayoutGuide key="safeArea" id="nDi-PO-3zQ"/>
+                                <color key="backgroundColor" systemColor="systemGray3Color"/>
+                                <color key="tintColor" systemColor="separatorColor"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="tOs-l4-YWW">
+                                <rect key="frame" x="180" y="35.5" width="54.5" height="27.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="0BT-7b-5Py"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="iJ4-tl-b9O" firstAttribute="centerY" secondItem="qqZ-pJ-z2c" secondAttribute="centerY" id="3jf-gT-z0a"/>
+                            <constraint firstItem="iJ4-tl-b9O" firstAttribute="leading" secondItem="qqZ-pJ-z2c" secondAttribute="leadingMargin" id="N3R-uM-tvm"/>
+                            <constraint firstItem="iJ4-tl-b9O" firstAttribute="top" secondItem="tOs-l4-YWW" secondAttribute="bottom" constant="42" id="QBe-6r-J71"/>
+                            <constraint firstItem="iJ4-tl-b9O" firstAttribute="trailing" secondItem="qqZ-pJ-z2c" secondAttribute="trailingMargin" id="aaB-dK-MPt"/>
+                            <constraint firstItem="iJ4-tl-b9O" firstAttribute="top" secondItem="0BT-7b-5Py" secondAttribute="top" constant="61" id="hCU-HM-zQW"/>
+                            <constraint firstItem="tOs-l4-YWW" firstAttribute="centerX" secondItem="qqZ-pJ-z2c" secondAttribute="centerX" id="iaN-j2-MnH"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="graphTitle" destination="tOs-l4-YWW" id="mis-wb-Z6A"/>
+                        <outlet property="trendChart" destination="iJ4-tl-b9O" id="2Kx-sE-zd4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Wz-6m-vSG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4937.68115942029" y="-251.45089285714283"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="TuR-nz-Rnq"/>
+        <segue reference="kcz-b2-YLP"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="doc.plaintext" catalog="system" width="115" height="128"/>

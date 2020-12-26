@@ -9,6 +9,7 @@ import UIKit
 import Charts
 
 class UIDataView: UIViewController {
+    @IBOutlet weak var fourthGraphView: UIView!
     @IBOutlet weak var thirdGraphView: UIView!
     @IBOutlet weak var secondGraphView: UIView!
     @IBOutlet weak var firstGraphView: UIView!
@@ -23,6 +24,7 @@ class UIDataView: UIViewController {
     static let toFirstView = "goToFirst"
     static let toSecondView = "goToSecond"
     static let toThirdView = "goToThird"
+    static let toFourthView = "goToFourth"
     let defaults = UserDefaults.standard
 
     
@@ -44,9 +46,12 @@ class UIDataView: UIViewController {
         self.firstGraphView.alpha = 0
         self.secondGraphView.alpha = 0
         self.thirdGraphView.alpha = 1
+        self.fourthGraphView.alpha = 0
+
         self.dataLabelOne.alpha = 1
         self.dataLabelTwo.alpha = 1
         self.dataLabelThree.alpha = 1
+
         
         super.viewDidLoad()
         
@@ -64,6 +69,8 @@ class UIDataView: UIViewController {
                 self.firstGraphView.alpha = 0
                 self.secondGraphView.alpha = 0
                 self.thirdGraphView.alpha = 1
+                self.fourthGraphView.alpha = 0
+
                 
             })
         } else if(sender.selectedSegmentIndex == 1){
@@ -71,13 +78,24 @@ class UIDataView: UIViewController {
                 self.firstGraphView.alpha = 0
                 self.secondGraphView.alpha = 1
                 self.thirdGraphView.alpha = 0
+                self.fourthGraphView.alpha = 0
+
             })
-        }else{
+        }else if(sender.selectedSegmentIndex == 2){
             UIView.animate(withDuration: 0.5, animations: {
                 self.firstGraphView.alpha = 1
                 self.secondGraphView.alpha = 0
                 self.thirdGraphView.alpha = 0
+                self.fourthGraphView.alpha = 0
             })
+        }else{
+            UIView.animate(withDuration: 0.5, animations: {
+                self.firstGraphView.alpha = 0
+                self.secondGraphView.alpha = 0
+                self.thirdGraphView.alpha = 0
+                self.fourthGraphView.alpha = 1
+            })
+            
         }
     }
     
@@ -118,6 +136,11 @@ class UIDataView: UIViewController {
             
             dataLabelTwo.text = displayText
         }else{
+            let destinationVC = segue.destination as! GFView
+            destinationVC.userInput = userInputPicker
+            destinationVC.userSelection = userSelection
+            destinationVC.generateGraph()
+           
             
         }
     }

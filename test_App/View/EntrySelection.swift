@@ -22,6 +22,9 @@ class EntrySelection: UIViewController{
     var locationManager = CLLocationManager()
     var userSelection = ""
     var currentCountryGPS = ""
+    var TotalConfirmedCases:String?
+    var NewlyConfirmedCases:String?
+    var TrendingCases:String?
     
     let defaults = UserDefaults.standard
     
@@ -33,6 +36,7 @@ class EntrySelection: UIViewController{
         networkManager.getUSACSVRanking()
         self.refreshStoredData()
         setNotification()
+        notificationManager.cancelNotifications()
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -64,6 +68,7 @@ class EntrySelection: UIViewController{
     func setNotification() -> Void {
         //self.refreshStoredData()
         notificationManager.requestPermission()
+        //notificationManager.addNotification(title: "Your stored location Data is ", body: self.NewlyConfirmedCases ?? "NA" , dateTime: DateComponents(second: 10))
         //notificationManager.addNotification(title: "Open COVID-19 App", dateTime: DateComponents(second: 10))
        // double currentTime = CACurrentMediaTime()
         //print(CACurrentMediaTime())
@@ -91,6 +96,11 @@ class EntrySelection: UIViewController{
         let displayText1 = "Total Confirmed Cases : " + String(Int(confirmedCasesToday))
         let displayText2 = "Newly Confirmed Cases Today : " + String(Int(confirmedCasesToday-confirmedCasesYesterday))
         let displayText3 = "Newly Confirmed Cases in the past 14 days :  " + String(Int(confirmedCasesToday - confirmedArray[confirmedArray.count-15]))
+        
+        self.TotalConfirmedCases = displayText1
+        self.NewlyConfirmedCases = displayText2
+        self.TrendingCases = displayText3
+        
         defaults.set(displayText1, forKey: "dataLabelOne")
         defaults.set(displayText2, forKey: "dataLabelTwo")
         defaults.set(displayText3, forKey: "dataLabelThree")

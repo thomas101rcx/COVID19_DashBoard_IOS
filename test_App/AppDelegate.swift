@@ -26,6 +26,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         completionHandler([.list, .badge, .sound])
     }
     
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        if response.notification.request.identifier == "Local Notification" {
+            print("Handling notifications with the Local Notification Identifier")
+        }
+        
+        completionHandler()
+    }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -75,6 +85,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func applicationDidEnterBackground(_ application: UIApplication) {
         submitBackgroundTasks()
     }
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+         
+         UIApplication.shared.applicationIconBadgeNumber = 0
+     }
     
     func submitBackgroundTasks() {
         // Declared at the "Permitted background task scheduler identifiers" in info.plist

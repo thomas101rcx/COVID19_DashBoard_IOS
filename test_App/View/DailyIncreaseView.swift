@@ -9,6 +9,8 @@
 import Charts
 import UIKit
 
+
+
 class DailyIncreaseView: UIViewController{
     
     @IBOutlet weak var graphTitle: UILabel!

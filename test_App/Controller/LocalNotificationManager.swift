@@ -13,6 +13,7 @@ import UIKit
 struct Notification {
     var id: String
     var title: String
+    var body : String
     var datetime : DateComponents
 }
 
@@ -28,16 +29,19 @@ class LocalNotificationManager {
                 }
         }
     }
-    func addNotification(title: String, dateTime : DateComponents) -> Void {
-        notifications.append(Notification(id: UUID().uuidString, title: title,datetime: dateTime ))
+    func addNotification(title: String, body : String,dateTime : DateComponents) -> Void {
+        notifications.append(Notification(id: UUID().uuidString, title: title, body : body,datetime: dateTime ))
     }
     
     func scheduleNotifications() -> Void {
         for notification in notifications {
             let content = UNMutableNotificationContent()
+            let userActions = "User Actions"
             content.title = notification.title
+            content.body = notification.body
             content.sound = .default
-            
+            content.badge = 1
+            content.categoryIdentifier = userActions
             let trigger = UNCalendarNotificationTrigger(dateMatching: notification.datetime, repeats: true)
             let request = UNNotificationRequest(identifier: notification.id, content: content, trigger: trigger)
             
@@ -45,6 +49,10 @@ class LocalNotificationManager {
                 guard error == nil else { return }
                 print("Scheduling notification with id: \(notification.id)")
             }
+            let snoozeAction = UNNotificationAction(identifier: "Snooze", title: "Snooze", options: [])
+                let deleteAction = UNNotificationAction(identifier: "Delete", title: "Delete", options: [.destructive])
+                let category = UNNotificationCategory(identifier: userActions, actions: [snoozeAction, deleteAction], intentIdentifiers: [], options: [])
+            UNUserNotificationCenter.current().setNotificationCategories([category])
         }
     }
     func schedule() -> Void {

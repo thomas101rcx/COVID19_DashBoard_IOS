@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7215E6E824E83753003784B8 /* Improvements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7215E6E724E83753003784B8 /* Improvements.swift */; };
 		723AF18E24AC8B8E000FDCE0 /* UIDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723AF18D24AC8B8E000FDCE0 /* UIDataView.swift */; };
+		725BABAE25964B730059F144 /* GFView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725BABAD25964B730059F144 /* GFView.swift */; };
 		7264944024EBB391009B5F68 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7264943F24EBB391009B5F68 /* NetworkManager.swift */; };
 		7274E4C624B0B055007BF6AE /* DailyIncreaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274E4C524B0B055007BF6AE /* DailyIncreaseView.swift */; };
 		7274E4C824B0B491007BF6AE /* TotalConfirmedCasesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274E4C724B0B491007BF6AE /* TotalConfirmedCasesView.swift */; };
@@ -51,6 +52,7 @@
 		7215E6E724E83753003784B8 /* Improvements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Improvements.swift; sourceTree = "<group>"; };
 		7236C8F6256262AC004A97AF /* COVID_19.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = COVID_19.entitlements; sourceTree = "<group>"; };
 		723AF18D24AC8B8E000FDCE0 /* UIDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDataView.swift; sourceTree = "<group>"; };
+		725BABAD25964B730059F144 /* GFView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFView.swift; sourceTree = "<group>"; };
 		7264943F24EBB391009B5F68 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		7274E4C524B0B055007BF6AE /* DailyIncreaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyIncreaseView.swift; sourceTree = "<group>"; };
 		7274E4C724B0B491007BF6AE /* TotalConfirmedCasesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalConfirmedCasesView.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				72F3690524B2112E00C4D630 /* EntrySelection.swift */,
 				7298114E24FA33B60057E71D /* RankingView.swift */,
 				7298115024FA36B10057E71D /* RankingSelection.swift */,
+				725BABAD25964B730059F144 /* GFView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				7274E4C624B0B055007BF6AE /* DailyIncreaseView.swift in Sources */,
 				72EBDC7824A990DD0039D491 /* SceneDelegate.swift in Sources */,
 				72F3690624B2112E00C4D630 /* EntrySelection.swift in Sources */,
+				725BABAE25964B730059F144 /* GFView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -576,8 +580,7 @@
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 3Q6FSJ4QQ7;
 				INFOPLIST_FILE = test_App/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
-				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -586,7 +589,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.thomaslai.test-COVID-19-Tracking-App";
 				PRODUCT_NAME = COVID_19;
 				SDKROOT = iphoneos;
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -602,8 +605,7 @@
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 3Q6FSJ4QQ7;
 				INFOPLIST_FILE = test_App/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
-				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -612,7 +614,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.thomaslai.test-COVID-19-Tracking-App";
 				PRODUCT_NAME = COVID_19;
 				SDKROOT = iphoneos;
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

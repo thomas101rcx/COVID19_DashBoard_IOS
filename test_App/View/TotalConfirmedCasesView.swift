@@ -9,6 +9,11 @@
 import UIKit
 import Charts
 
+struct TotalConfirmedCases {
+    var entryValue : Double
+}
+
+
 class TotalConfirmedCasesView: UIViewController, ChartViewDelegate {
     
     @IBOutlet weak var graphTitle: UILabel!
