@@ -61,7 +61,7 @@ class TrendGraphView: UIViewController, ChartViewDelegate {
             }
             else{
                 delta = confirmed_cases[i+14] - confirmed_cases[i]
-                weeklyNewCasesList.append( delta)
+                weeklyNewCasesList.append(delta)
             }
             let value = ChartDataEntry.init(x: confirmed_cases[i] ,y: delta)
             if value.y.isInfinite{

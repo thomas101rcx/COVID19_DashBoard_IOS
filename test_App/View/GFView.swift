@@ -56,7 +56,7 @@ class GFView: UIViewController, ChartViewDelegate {
         GF_perday.append(0.0)
         GF_perday.append(0.0)
         for i in 2...confirmed_cases.count-1{
-           
+            
             let GF_today = (confirmed_cases[i] - confirmed_cases[i-1]) / (confirmed_cases[i-1] - confirmed_cases[i-2])
             
             GF_perday.append(GF_today)
@@ -84,7 +84,7 @@ class GFView: UIViewController, ChartViewDelegate {
         // var labels = "total Confirmed Cases"
         data = LineChartData(dataSets: [line1])
         trendChart.data = data
-        trendChart.leftAxis.axisMaximum = 2
+        trendChart.leftAxis.axisMaximum = 3
         trendChart.leftAxis.axisMinimum = 0
         //chtChart.leftAxis.axisMinimum = 0
         //chtChart.leftAxis.axisMaximum = 200000

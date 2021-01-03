@@ -31,7 +31,7 @@ class NetworkManager {
             print("The URL is bad !")
         }
         
-         
+        
     }
     
     
@@ -41,7 +41,7 @@ class NetworkManager {
             do {
                 USACSV = try String(contentsOf: url)                
                 defaults.set(USACSV, forKey: "USACSV")
-
+                
             } catch {
                 print("Contents can not be loaded")
                 
@@ -51,24 +51,24 @@ class NetworkManager {
         }
         
     }
-  
-      
-      
-      func getUSACSVRanking(){
-          
-          if let url = URL(string: "https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-states.csv") {
-              do {
-                  USACSVRanking = try String(contentsOf: url)
-               //   print(USACSVRanking)
-                  defaults.set(USACSVRanking, forKey: "USACSVRanking")
-
-              } catch {
-                  print("Contents can not be loaded")
-                  
-              }
-          } else {
-              print("URL is bad")
-          }
-      }
+    
+    
+    
+    func getUSACSVRanking(){
+        
+        if let url = URL(string: "https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-states.csv") {
+            do {
+                USACSVRanking = try String(contentsOf: url)
+                //   print(USACSVRanking)
+                defaults.set(USACSVRanking, forKey: "USACSVRanking")
+                
+            } catch {
+                print("Contents can not be loaded")
+                
+            }
+        } else {
+            print("URL is bad")
+        }
+    }
     
 }

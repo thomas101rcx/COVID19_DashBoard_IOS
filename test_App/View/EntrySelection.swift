@@ -83,11 +83,11 @@ class EntrySelection: UIViewController{
         var confirmedArray : [Double] = []
         if country == "World"{
             storedLocation = "Your stored location is : " + state
-            confirmedArray = calculations.getConfirmedCases(rawCSV: defaults.string(forKey: "worldCSV") ?? "NAH", userInput: state, placeColumn: 1)
+            confirmedArray = calculations.getConfirmedCases(rawCSV: defaults.string(forKey: "worldCSV") ?? "NAH", userInput: state, locationSelection: "World", placeColumn: 1)
         }
         else{
             storedLocation = "Your stored location is : " + state + ", " + country
-            confirmedArray = calculations.getConfirmedCases(rawCSV: defaults.string(forKey: "USACSV") ?? "NAH", userInput: state, placeColumn: 6)
+            confirmedArray = calculations.getConfirmedCases(rawCSV: defaults.string(forKey: "USACSV") ?? "NAH", userInput: state, locationSelection: "USA", placeColumn: 6)
         }
         
         storedLocationName.text =  storedLocation
@@ -150,7 +150,7 @@ class EntrySelection: UIViewController{
             destinationVC.userInputPicker = currentCountryGPS
             destinationVC.userSelection = "World"
             let calculations  = Calculations()
-            let worldConfirmedCases = calculations.getConfirmedCases(rawCSV: defaults.string(forKey: "worldCSV") ?? "world", userInput: currentCountryGPS, placeColumn: 1)
+            let worldConfirmedCases = calculations.getConfirmedCases(rawCSV: defaults.string(forKey: "worldCSV") ?? "world", userInput: currentCountryGPS, locationSelection: "World", placeColumn: 1)
             defaults.set(worldConfirmedCases, forKey: "worldConfirmedCases")
             
         }

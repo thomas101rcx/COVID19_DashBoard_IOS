@@ -10,10 +10,18 @@
 import UIKit
 
 class Calculations {
-    var confirmed_cases = Array(repeating: 0.0, count: 1000)
     let defaults = UserDefaults.standard
     var todayConfirmedCasesArray : [Double] = []
-    func getConfirmedCases(rawCSV : String, userInput : String, placeColumn : Int) -> [Double]{
+    var confirmed_cases_new : [Double] = []
+    func getConfirmedCases(rawCSV : String, userInput : String, locationSelection : String,placeColumn : Int) -> [Double]{
+        var datastartIndex = 0
+        
+        if locationSelection == "World"{
+            datastartIndex  = 4
+        }
+        else{
+            datastartIndex = 13
+        }
         
         //Split the rawCSV file to row by row
         let rawCSV = rawCSV.components(separatedBy: "\n")
@@ -23,24 +31,37 @@ class Calculations {
             if row != ""{
                 let rowArray = row.components(separatedBy: ",")
                 if(rowArray[placeColumn].contains(userInput)){
-                    for column in 0...rowArray.count-14{
-                        confirmed_cases[column] = confirmed_cases[column] + (Double(rowArray[column+13]/*.filter{ !" \n\t\r".contains($0) }*/) ?? 0)
+                    
+                    for column in 0...rowArray.count-(datastartIndex+1){
+                        //Append data to the empty list for the first time
+                        if confirmed_cases_new.indices.contains(column) == false{
+                            confirmed_cases_new.insert(Double(rowArray[column+datastartIndex]) ?? 0, at: column)
+                        }
+                        //Add subsequent county data to the same state/country
+                        else{
+                            confirmed_cases_new[column] = confirmed_cases_new[column] + (Double(rowArray[column+datastartIndex]) ?? 0)
+                        }
                     }
                 }
+                // Use case for world data
                 else if (userInput == "World"){
-                    for column in 0...rowArray.count-14{
-                        confirmed_cases[column] = confirmed_cases[column] + (Double(rowArray[column+13]/*.filter{ !" \n\t\r".contains($0) }*/) ?? 0)
+                    
+                    for column in 0...rowArray.count-(datastartIndex+1){
+                        //Append data to the empty list for the first time
+                        if confirmed_cases_new.indices.contains(column) == false{
+                            confirmed_cases_new.insert(Double(rowArray[column+datastartIndex]) ?? 0, at: column)
+                        }
+                        //Add subsequent county data to the same state/country
+                        else{
+                            confirmed_cases_new[column] = confirmed_cases_new[column] + (Double(rowArray[column+datastartIndex]) ?? 0)
+                        }
                     }
                 }
             }
         }
         
-        //remove trailing zeroes
-        confirmed_cases = confirmed_cases.removing(suffix: 0)
-        confirmed_cases.remove(at: confirmed_cases.count-1)
-        //  print(confirmed_cases[confirmed_cases.count-1])
-        
-        return confirmed_cases
+        confirmed_cases_new.remove(at: confirmed_cases_new.count-1)
+        return confirmed_cases_new
     }
     
     func getConfirmedCasesUSA(rawCSV : String) -> ([Double], [Double], [Double]){
@@ -135,8 +156,4 @@ class Calculations {
         
         return (Int(todayConfirmedCases),Int(dailyIncreasedCasesToday),tMinus14DaysData)
     }
-    
-    
-    
-    
 }
