@@ -31,11 +31,20 @@ class RankingView: UITableViewController {
         let locationList = pickerView.loadData(userSelection: userSelection)
         let defaults = UserDefaults.standard
         var worldCSV = defaults.string(forKey : "worldCSV") ?? "world"
-        let USACSV = defaults.string(forKey : "USACSVRanking") ?? "USA"
+        var USACSV = defaults.string(forKey : "USACSVRanking") ?? "USA"
+        
+        var rawCSV = USACSV.components(separatedBy: "\n")
         
         if worldCSV.contains("\r"){
             worldCSV = worldCSV.replacingOccurrences(of: "\r", with: "")
         }
+        for i in stride(from: rawCSV.count-1, to: 0, by: -1){
+            if rawCSV[i].contains("American Samoa"){
+                rawCSV.remove(at: i)
+            }
+        }
+        
+        USACSV = rawCSV.joined(separator:"\n")
         
         if(userSelection == "World"){
             var endofStrings = ""
@@ -89,8 +98,6 @@ class RankingView: UITableViewController {
     
     override func viewDidLoad() {
         
-
-       
         prepareData()
     }
 

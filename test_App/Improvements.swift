@@ -16,6 +16,7 @@
 // 3-1 Added refresh mode so when the app is open, the stored location's covid 19 data is up to date //
 
 // 4. Add ranking //
+// 5. Optimize memory usage
 
 //Aggregate world data 
 
@@ -29,6 +30,8 @@
 // 5. For Trend graph, add date to each data point for clarity
 
 // Force touch for more sorting option A-Z and Z-A in Ranking
+
+// Optimize memory usage -- advanced
 
 
 

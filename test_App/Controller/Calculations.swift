@@ -4,8 +4,7 @@
 //
 //  Created by Thomas Lai on 8/25/20.
 //  Copyright © 2020 Thomas Lai. All rights reserved.
-//  Does all the math work for me
-//
+//  Does all the calculations for the app
 
 import UIKit
 
@@ -25,7 +24,6 @@ class Calculations {
         
         //Split the rawCSV file to row by row
         let rawCSV = rawCSV.components(separatedBy: "\n")
-        
         // Extract Data and calculate sum of confirmed cases by state/country
         for row in rawCSV{
             if row != ""{
@@ -33,6 +31,7 @@ class Calculations {
                 if(rowArray[placeColumn].contains(userInput)){
                     
                     for column in 0...rowArray.count-(datastartIndex+1){
+                        
                         //Append data to the empty list for the first time
                         if confirmed_cases_new.indices.contains(column) == false{
                             confirmed_cases_new.insert(Double(rowArray[column+datastartIndex]) ?? 0, at: column)
@@ -60,6 +59,7 @@ class Calculations {
             }
         }
         
+        
         confirmed_cases_new.remove(at: confirmed_cases_new.count-1)
         return confirmed_cases_new
     }
@@ -70,13 +70,18 @@ class Calculations {
         var USADailyIncreasedCases :[Double] = []
         var tMinus14DaysData : [Double] = []
         
+
         let rawCSV = rawCSV.components(separatedBy: "\n")
+
         
+            
+        // 55 is the number of states/territory
         for i in stride(from: rawCSV.count-1, to: rawCSV.count - 1 - 2*55, by: -1) {
             let Data = Double(rawCSV[i].components(separatedBy: ",")[3]) ?? 0.0
             USAConfirmedCases.append(Data)
         }
         
+        //Calculate data from 14 days ago
         for i in stride(from: rawCSV.count-1 - 14*55, to: rawCSV.count - 1 - 15*55, by: -1) {
             let Data = Double(rawCSV[i].components(separatedBy: ",")[3]) ?? 0.0
             USAConfirmedCases.append(Data)
@@ -93,6 +98,7 @@ class Calculations {
         USAConfirmedCases.reverse()
         USADailyIncreasedCases.reverse()
         tMinus14DaysData.reverse()
+
         
         return (USAConfirmedCases,USADailyIncreasedCases,tMinus14DaysData)
     }
@@ -153,6 +159,7 @@ class Calculations {
         let  tMinus14DaysData = Int(todayConfirmedCasesArray[todayConfirmedCasesArray.count-1] - todayConfirmedCasesArray[todayConfirmedCasesArray.count-15])
         
         todayConfirmedCasesArray = Array(repeating: 0.0, count: 30)
+
         
         return (Int(todayConfirmedCases),Int(dailyIncreasedCasesToday),tMinus14DaysData)
     }

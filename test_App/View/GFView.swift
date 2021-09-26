@@ -22,7 +22,6 @@ class GFView: UIViewController, ChartViewDelegate {
     var data = LineChartData()
     var tMinus14DaysData = 0
     
-    
     func generateGraph() {
         let defaults = UserDefaults.standard
         switch userSelection {
@@ -57,7 +56,15 @@ class GFView: UIViewController, ChartViewDelegate {
         GF_perday.append(0.0)
         for i in 2...confirmed_cases.count-1{
             
-            let GF_today = (confirmed_cases[i] - confirmed_cases[i-1]) / (confirmed_cases[i-1] - confirmed_cases[i-2])
+            let numerator = confirmed_cases[i] - confirmed_cases[i-1]
+            let denominator = confirmed_cases[i-1] - confirmed_cases[i-2]
+            var GF_today = 0.0
+            if numerator == 0 || denominator == 0{
+                GF_today = 0.0
+            }else{
+                GF_today = numerator / denominator
+            }
+            
             
             GF_perday.append(GF_today)
             let value = ChartDataEntry.init(x: Double(i) ,y: GF_today)
@@ -69,7 +76,7 @@ class GFView: UIViewController, ChartViewDelegate {
             
             
         }
-        
+        print(GF_perday)
         
     }
     

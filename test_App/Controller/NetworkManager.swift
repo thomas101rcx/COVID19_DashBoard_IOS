@@ -69,6 +69,7 @@ class NetworkManager {
         } else {
             print("URL is bad")
         }
+
     }
     
 }
