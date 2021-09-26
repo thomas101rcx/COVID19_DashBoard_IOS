@@ -82,7 +82,7 @@ class TrendGraphView: UIViewController, ChartViewDelegate {
         
         super.viewDidLoad()
         graphTitle.text = "Trend Graph"
-        let Trend_line = LineChartDataSet.init(entries: covid_trend_graph, label: "Newly confrimed cases in the past 14 days")
+        let Trend_line = LineChartDataSet.init(entries: covid_trend_graph, label: "Newly confrimed cases in the past 28 days")
         //Here we convert lineChartEntry to a LineChartDataSet
         Trend_line.colors = [NSUIColor.white] //Sets the line colour to gray
         Trend_line.circleRadius = 0.1 // Disable the circle on line chart

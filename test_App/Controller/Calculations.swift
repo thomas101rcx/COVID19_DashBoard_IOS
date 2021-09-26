@@ -35,36 +35,29 @@ class Calculations {
                 let rowArray = row.components(separatedBy: ",")
                 
                 if(rowArray[placeColumn].contains(function_userInput)){
-                    // Use case for USA
-                    if(locationSelection == "USA"){
-                        
-                        for column in 0...rowArray.count-(datastartIndex+1){
-                            
-                            //Append data to the empty list for the first time
-                            if confirmed_cases_new.indices.contains(column) == false{
-                                confirmed_cases_new.insert(Double(rowArray[column+datastartIndex]) ?? 0, at: column)
-                            }
-                            //Add subsequent county data to the same state/country
-                            else{
-                                confirmed_cases_new[column] = confirmed_cases_new[column] + (Double(rowArray[column+datastartIndex]) ?? 0)
-                            }
+                    // Use case for USA and World
+                    for column in 0...rowArray.count-(datastartIndex+1){
+                        //Append data to the empty list for the first time
+                        if confirmed_cases_new.indices.contains(column) == false{
+                            confirmed_cases_new.insert(Double(rowArray[column+datastartIndex]) ?? 0, at: column)
                         }
-                        
+                        //Add subsequent county data to the same state/country
+                        else{
+                            confirmed_cases_new[column] = confirmed_cases_new[column] + (Double(rowArray[column+datastartIndex]) ?? 0)
+                        }
                     }
-                    // Use case for world
-                    else{
-                        
-                        for column in 0...rowArray.count-(datastartIndex+1){
-                            //Append data to the empty list for the first time
-                            if confirmed_cases_new.indices.contains(column) == false{
-                                confirmed_cases_new.insert(Double(rowArray[column+datastartIndex]) ?? 0, at: column)
-                            }
-                            //Add subsequent county data to the same state/country
-                            else{
-                                confirmed_cases_new[column] = confirmed_cases_new[column] + (Double(rowArray[column+datastartIndex]) ?? 0)
-                            }
+                }
+                else if(userInput == "World"){
+                    // For summing the world data
+                    for column in 0...rowArray.count-(datastartIndex+1){
+                        //Append data to the empty list for the first time
+                        if confirmed_cases_new.indices.contains(column) == false{
+                            confirmed_cases_new.insert(Double(rowArray[column+datastartIndex]) ?? 0, at: column)
                         }
-                        
+                        //Add subsequent county data to the same state/country
+                        else{
+                            confirmed_cases_new[column] = confirmed_cases_new[column] + (Double(rowArray[column+datastartIndex]) ?? 0)
+                        }
                     }
                 }
             }
@@ -85,7 +78,6 @@ class Calculations {
         let rawCSV = rawCSV.components(separatedBy: "\n")
         
         
-        
         // 55 is the number of states/territory
         for i in stride(from: rawCSV.count-1, to: rawCSV.count - 1 - 2*55, by: -1) {
             let Data = Double(rawCSV[i].components(separatedBy: ",")[3]) ?? 0.0
@@ -93,7 +85,7 @@ class Calculations {
         }
         
         //Calculate data from 14 days ago
-        for i in stride(from: rawCSV.count-1 - 14*55, to: rawCSV.count - 1 - 15*55, by: -1) {
+        for i in stride(from: rawCSV.count-1 - 28*55, to: rawCSV.count - 1 - 29*55, by: -1) {
             let Data = Double(rawCSV[i].components(separatedBy: ",")[3]) ?? 0.0
             USAConfirmedCases.append(Data)
         }
@@ -167,7 +159,7 @@ class Calculations {
         
         let dailyIncreasedCasesToday = todayConfirmedCasesArray[todayConfirmedCasesArray.count-1] - todayConfirmedCasesArray[todayConfirmedCasesArray.count-2]
         
-        let  tMinus14DaysData = Int(todayConfirmedCasesArray[todayConfirmedCasesArray.count-1] - todayConfirmedCasesArray[todayConfirmedCasesArray.count-15])
+        let  tMinus14DaysData = Int(todayConfirmedCasesArray[todayConfirmedCasesArray.count-1] - todayConfirmedCasesArray[todayConfirmedCasesArray.count-28])
         
         todayConfirmedCasesArray = Array(repeating: 0.0, count: 30)
         

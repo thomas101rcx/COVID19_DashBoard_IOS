@@ -131,7 +131,6 @@ class PickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
         
         if userSelection == "World"{
             let worldConfirmedCases =  calculations.getConfirmedCases(rawCSV: defaults.string(forKey: "worldCSV") ?? "world", userInput: userInputfromPicker, locationSelection: "World", placeColumn: 1)
-            print(worldConfirmedCases)
             defaults.set(worldConfirmedCases, forKey: "worldConfirmedCases")
         }
         else{
