@@ -119,13 +119,13 @@ class Calculations {
                     
                     if userInput == "China" || userInput == "Canada" || userInput == "Australia" || userInput == "Denmark" || userInput == "France" || userInput == "Netherlands" || userInput == "United Kingdom"{
                         var count = 0
-                        for column in stride(from: rowArray.count-1, to: rowArray.count-21, by: -1) {
+                        for column in stride(from: rowArray.count-1, to: rowArray.count-30, by: -1) {
                             worldConfirmedCasesSpecial[count] = worldConfirmedCasesSpecial[count] +  (Double(rowArray[column]) ?? 0.0)
                             count  = count + 1
                         }
                     }
                     else{
-                        for column in stride(from: rowArray.count-1, to: rowArray.count-21, by: -1) {
+                        for column in stride(from: rowArray.count-1, to: rowArray.count-30, by: -1) {
                             worldConfirmedCases.append(Double(rowArray[column]) ?? 0.0)
                             
                         }
@@ -159,11 +159,11 @@ class Calculations {
         
         let dailyIncreasedCasesToday = todayConfirmedCasesArray[todayConfirmedCasesArray.count-1] - todayConfirmedCasesArray[todayConfirmedCasesArray.count-2]
         
-        let  tMinus14DaysData = Int(todayConfirmedCasesArray[todayConfirmedCasesArray.count-1] - todayConfirmedCasesArray[todayConfirmedCasesArray.count-28])
+        let  tMinus28DaysData = Int(todayConfirmedCasesArray[todayConfirmedCasesArray.count-1] - todayConfirmedCasesArray[todayConfirmedCasesArray.count-29])
         
         todayConfirmedCasesArray = Array(repeating: 0.0, count: 30)
         
         
-        return (Int(todayConfirmedCases),Int(dailyIncreasedCasesToday),tMinus14DaysData)
+        return (Int(todayConfirmedCases),Int(dailyIncreasedCasesToday),tMinus28DaysData)
     }
 }
