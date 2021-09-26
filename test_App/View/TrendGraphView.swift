@@ -55,12 +55,12 @@ class TrendGraphView: UIViewController, ChartViewDelegate {
         
         //Append data to ChartDataEntry
         var delta = 0.0
-        for i in 0...confirmed_cases.count-15{
-            if i < 14 {
-                weeklyNewCasesList.append( 0.0)
+        for i in 0...confirmed_cases.count-29{
+            if i < 28 {
+                weeklyNewCasesList.append(0.0)
             }
             else{
-                delta = confirmed_cases[i+14] - confirmed_cases[i]
+                delta = confirmed_cases[i+28] - confirmed_cases[i]
                 weeklyNewCasesList.append(delta)
             }
             let value = ChartDataEntry.init(x: confirmed_cases[i] ,y: delta)
@@ -72,6 +72,7 @@ class TrendGraphView: UIViewController, ChartViewDelegate {
             
             
         }
+
         
         tMinus14DaysData = Int(weeklyNewCasesList.last ?? 0.0)
     }
@@ -86,9 +87,9 @@ class TrendGraphView: UIViewController, ChartViewDelegate {
         Trend_line.colors = [NSUIColor.white] //Sets the line colour to gray
         Trend_line.circleRadius = 0.1 // Disable the circle on line chart
         Trend_line.drawValuesEnabled = false // Disable the value next to each datapoint
-        // var labels = "total Confirmed Cases"
-        data = LineChartData(dataSets: [Trend_line])
         
+
+        data.addDataSet(Trend_line)
         
 
         trendChart.data = data

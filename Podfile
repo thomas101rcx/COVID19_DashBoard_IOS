@@ -6,6 +6,5 @@ target 'test_App' do
   use_frameworks!
 
   pod 'Charts'
-  pod update
 
 end

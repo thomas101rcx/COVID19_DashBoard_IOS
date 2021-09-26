@@ -13,47 +13,58 @@ class Calculations {
     var todayConfirmedCasesArray : [Double] = []
     var confirmed_cases_new : [Double] = []
     func getConfirmedCases(rawCSV : String, userInput : String, locationSelection : String,placeColumn : Int) -> [Double]{
+        
+        var function_userInput = userInput
         var datastartIndex = 0
         
         if locationSelection == "World"{
             datastartIndex  = 4
         }
         else{
-            datastartIndex = 13
+            datastartIndex = 12
         }
-        
+        if function_userInput == "United States" || function_userInput == "USA"{
+            
+            function_userInput = "US"
+        }
         //Split the rawCSV file to row by row
         let rawCSV = rawCSV.components(separatedBy: "\n")
         // Extract Data and calculate sum of confirmed cases by state/country
         for row in rawCSV{
             if row != ""{
                 let rowArray = row.components(separatedBy: ",")
-                if(rowArray[placeColumn].contains(userInput)){
-                    
-                    for column in 0...rowArray.count-(datastartIndex+1){
+                
+                if(rowArray[placeColumn].contains(function_userInput)){
+                    // Use case for USA
+                    if(locationSelection == "USA"){
                         
-                        //Append data to the empty list for the first time
-                        if confirmed_cases_new.indices.contains(column) == false{
-                            confirmed_cases_new.insert(Double(rowArray[column+datastartIndex]) ?? 0, at: column)
+                        for column in 0...rowArray.count-(datastartIndex+1){
+                            
+                            //Append data to the empty list for the first time
+                            if confirmed_cases_new.indices.contains(column) == false{
+                                confirmed_cases_new.insert(Double(rowArray[column+datastartIndex]) ?? 0, at: column)
+                            }
+                            //Add subsequent county data to the same state/country
+                            else{
+                                confirmed_cases_new[column] = confirmed_cases_new[column] + (Double(rowArray[column+datastartIndex]) ?? 0)
+                            }
                         }
-                        //Add subsequent county data to the same state/country
-                        else{
-                            confirmed_cases_new[column] = confirmed_cases_new[column] + (Double(rowArray[column+datastartIndex]) ?? 0)
-                        }
+                        
                     }
-                }
-                // Use case for world data
-                else if (locationSelection == "World"){
-                    
-                    for column in 0...rowArray.count-(datastartIndex+1){
-                        //Append data to the empty list for the first time
-                        if confirmed_cases_new.indices.contains(column) == false{
-                            confirmed_cases_new.insert(Double(rowArray[column+datastartIndex]) ?? 0, at: column)
+                    // Use case for world
+                    else{
+                        
+                        for column in 0...rowArray.count-(datastartIndex+1){
+                            //Append data to the empty list for the first time
+                            if confirmed_cases_new.indices.contains(column) == false{
+                                confirmed_cases_new.insert(Double(rowArray[column+datastartIndex]) ?? 0, at: column)
+                            }
+                            //Add subsequent county data to the same state/country
+                            else{
+                                confirmed_cases_new[column] = confirmed_cases_new[column] + (Double(rowArray[column+datastartIndex]) ?? 0)
+                            }
                         }
-                        //Add subsequent county data to the same state/country
-                        else{
-                            confirmed_cases_new[column] = confirmed_cases_new[column] + (Double(rowArray[column+datastartIndex]) ?? 0)
-                        }
+                        
                     }
                 }
             }
@@ -70,11 +81,11 @@ class Calculations {
         var USADailyIncreasedCases :[Double] = []
         var tMinus14DaysData : [Double] = []
         
-
-        let rawCSV = rawCSV.components(separatedBy: "\n")
-
         
-            
+        let rawCSV = rawCSV.components(separatedBy: "\n")
+        
+        
+        
         // 55 is the number of states/territory
         for i in stride(from: rawCSV.count-1, to: rawCSV.count - 1 - 2*55, by: -1) {
             let Data = Double(rawCSV[i].components(separatedBy: ",")[3]) ?? 0.0
@@ -98,7 +109,7 @@ class Calculations {
         USAConfirmedCases.reverse()
         USADailyIncreasedCases.reverse()
         tMinus14DaysData.reverse()
-
+        
         
         return (USAConfirmedCases,USADailyIncreasedCases,tMinus14DaysData)
     }
@@ -159,7 +170,7 @@ class Calculations {
         let  tMinus14DaysData = Int(todayConfirmedCasesArray[todayConfirmedCasesArray.count-1] - todayConfirmedCasesArray[todayConfirmedCasesArray.count-15])
         
         todayConfirmedCasesArray = Array(repeating: 0.0, count: 30)
-
+        
         
         return (Int(todayConfirmedCases),Int(dailyIncreasedCasesToday),tMinus14DaysData)
     }
