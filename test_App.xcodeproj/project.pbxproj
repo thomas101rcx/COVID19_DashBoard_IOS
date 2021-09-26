@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -220,9 +220,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		72EBDC7124A990DD0039D491 /* test_App */ = {
+		72EBDC7124A990DD0039D491 /* COVID-19 Data App */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 72EBDC9F24A990E10039D491 /* Build configuration list for PBXNativeTarget "test_App" */;
+			buildConfigurationList = 72EBDC9F24A990E10039D491 /* Build configuration list for PBXNativeTarget "COVID-19 Data App" */;
 			buildPhases = (
 				5E66AD95809702A5C22432B5 /* [CP] Check Pods Manifest.lock */,
 				72EBDC6E24A990DD0039D491 /* Sources */,
@@ -234,7 +234,7 @@
 			);
 			dependencies = (
 			);
-			name = test_App;
+			name = "COVID-19 Data App";
 			productName = test_App;
 			productReference = 72EBDC7224A990DD0039D491 /* COVID_19.app */;
 			productType = "com.apple.product-type.application";
@@ -299,7 +299,7 @@
 				};
 			};
 			buildConfigurationList = 72EBDC6D24A990DD0039D491 /* Build configuration list for PBXProject "test_App" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -311,7 +311,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				72EBDC7124A990DD0039D491 /* test_App */,
+				72EBDC7124A990DD0039D491 /* COVID-19 Data App */,
 				72EBDC8A24A990E10039D491 /* test_AppTests */,
 				72EBDC9524A990E10039D491 /* test_AppUITests */,
 			);
@@ -432,12 +432,12 @@
 /* Begin PBXTargetDependency section */
 		72EBDC8D24A990E10039D491 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 72EBDC7124A990DD0039D491 /* test_App */;
+			target = 72EBDC7124A990DD0039D491 /* COVID-19 Data App */;
 			targetProxy = 72EBDC8C24A990E10039D491 /* PBXContainerItemProxy */;
 		};
 		72EBDC9824A990E10039D491 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 72EBDC7124A990DD0039D491 /* test_App */;
+			target = 72EBDC7124A990DD0039D491 /* COVID-19 Data App */;
 			targetProxy = 72EBDC9724A990E10039D491 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -505,7 +505,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -560,7 +560,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -576,9 +576,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = test_App/COVID_19.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = 3Q6FSJ4QQ7;
+				DEVELOPMENT_TEAM = MB4S83L3PX;
 				INFOPLIST_FILE = test_App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -586,8 +587,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.2;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.thomaslai.test-COVID-19-Tracking-App";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.thomaslai.test-COVID-19-TrackingApp";
 				PRODUCT_NAME = COVID_19;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
@@ -603,7 +605,7 @@
 				CODE_SIGN_ENTITLEMENTS = test_App/COVID_19.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = 3Q6FSJ4QQ7;
+				DEVELOPMENT_TEAM = MB4S83L3PX;
 				INFOPLIST_FILE = test_App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -611,7 +613,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.2;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.thomaslai.test-COVID-19-Tracking-App";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.thomaslai.test-COVID-19-TrackingApp";
 				PRODUCT_NAME = COVID_19;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = NO;
@@ -625,6 +627,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3Q6FSJ4QQ7;
 				INFOPLIST_FILE = test_AppTests/Info.plist;
@@ -668,6 +671,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3Q6FSJ4QQ7;
 				INFOPLIST_FILE = test_AppUITests/Info.plist;
@@ -716,7 +720,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		72EBDC9F24A990E10039D491 /* Build configuration list for PBXNativeTarget "test_App" */ = {
+		72EBDC9F24A990E10039D491 /* Build configuration list for PBXNativeTarget "COVID-19 Data App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				72EBDCA024A990E10039D491 /* Debug */,

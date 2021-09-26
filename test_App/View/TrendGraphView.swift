@@ -72,7 +72,7 @@ class TrendGraphView: UIViewController, ChartViewDelegate {
             
             
         }
-
+        
         tMinus14DaysData = Int(weeklyNewCasesList.last ?? 0.0)
     }
     
@@ -80,16 +80,21 @@ class TrendGraphView: UIViewController, ChartViewDelegate {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        graphTitle.text = "Trend Graph" 
-        let line1 = LineChartDataSet.init(entries: covid_trend_graph, label: "Newly confrimed cases in the past 14 days")
+        graphTitle.text = "Trend Graph"
+        let Trend_line = LineChartDataSet.init(entries: covid_trend_graph, label: "Newly confrimed cases in the past 14 days")
         //Here we convert lineChartEntry to a LineChartDataSet
-        line1.colors = [NSUIColor.blue] //Sets the colour to blue
-       // var labels = "total Confirmed Cases"
-        data = LineChartData(dataSets: [line1])
+        Trend_line.colors = [NSUIColor.white] //Sets the line colour to gray
+        Trend_line.circleRadius = 0.1 // Disable the circle on line chart
+        Trend_line.drawValuesEnabled = false // Disable the value next to each datapoint
+        // var labels = "total Confirmed Cases"
+        data = LineChartData(dataSets: [Trend_line])
+        
+        
+
         trendChart.data = data
         //chtChart.leftAxis.axisMinimum = 0
         //chtChart.leftAxis.axisMaximum = 200000
-       // trendChart.showsLargeContentViewer = true
+        // trendChart.showsLargeContentViewer = true
         trendChart.rightAxis.enabled = false
         trendChart.xAxis.labelPosition = XAxis.LabelPosition.bottom
     }

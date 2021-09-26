@@ -63,6 +63,9 @@ class GFView: UIViewController, ChartViewDelegate {
                 GF_today = 0.0
             }else{
                 GF_today = numerator / denominator
+                if GF_today >= 5{
+                    GF_today = 5
+                }
             }
             
             
@@ -76,7 +79,6 @@ class GFView: UIViewController, ChartViewDelegate {
             
             
         }
-        print(GF_perday)
         
     }
     
@@ -85,16 +87,16 @@ class GFView: UIViewController, ChartViewDelegate {
         
         super.viewDidLoad()
         graphTitle.text = "Growth Factor Graph"
-        let line1 = LineChartDataSet.init(entries: GF_graph)
+        let GF_line = LineChartDataSet.init(entries: GF_graph, label: "Growth Factor")
         //Here we convert lineChartEntry to a LineChartDataSet
-        line1.colors = [NSUIColor.blue] //Sets the colour to blue
-        // var labels = "total Confirmed Cases"
-        data = LineChartData(dataSets: [line1])
+        GF_line.colors = [NSUIColor.white] //Sets the colour to white
+        GF_line.circleRadius = 0.1 // Disable the circle on line chart
+        GF_line.drawValuesEnabled = false // Disable the value next to each datapoint
+        data = LineChartData(dataSets: [GF_line])
+            
         trendChart.data = data
-        trendChart.leftAxis.axisMaximum = 3
+        trendChart.leftAxis.axisMaximum = 6
         trendChart.leftAxis.axisMinimum = 0
-        //chtChart.leftAxis.axisMinimum = 0
-        //chtChart.leftAxis.axisMaximum = 200000
         // trendChart.showsLargeContentViewer = true
         trendChart.rightAxis.enabled = false
         trendChart.xAxis.labelPosition = XAxis.LabelPosition.bottom

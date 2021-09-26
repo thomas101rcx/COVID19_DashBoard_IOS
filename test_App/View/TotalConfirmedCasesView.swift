@@ -20,7 +20,6 @@ class TotalConfirmedCasesView: UIViewController, ChartViewDelegate {
     @IBOutlet weak var confirmedCasesView: LineChartView!
     var confirmed_cases : [Double] = []
     var confirmedCasesEntry = [ChartDataEntry]()
-    var dailyIncreEntry = [ChartDataEntry]()
     var userInput = ""
     var userSelection = ""
     var list = ""
@@ -73,17 +72,21 @@ class TotalConfirmedCasesView: UIViewController, ChartViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         graphTitle.text = "Total Confirmed Cases"
-        let line1 = LineChartDataSet(entries: confirmedCasesEntry, label: "Number of total cases")
+        let Confirmed_cases_line = LineChartDataSet(entries: confirmedCasesEntry, label: "Number of total cases")
         //Here we convert lineChartEntry to a LineChartDataSet
-        line1.colors = [NSUIColor.gray] //Sets the colour to blue
+        Confirmed_cases_line.colors = [NSUIColor.white] //Sets the colour to white
+        Confirmed_cases_line.circleRadius = 0.1 // Disable the circle on line chart
+        Confirmed_cases_line.drawValuesEnabled = false // Disable the value next to each datapoint
         
-        let data = LineChartData() //This is the object that will be added to the chart
-        data.addDataSet(line1) //Adds the line to the dataSet
+        let data = LineChartData(dataSets: [Confirmed_cases_line]) //This is the object that will be added to the chart
+        
+        
         
         confirmedCasesView.data = data
         //confirmedCasesView.leftAxis.axisMinimum = 0
         //confirmedCasesView.leftAxis.axisMaximum = 200000
         confirmedCasesView.rightAxis.enabled = false
+        
         confirmedCasesView.xAxis.labelPosition = XAxis.LabelPosition.bottom
         let endDate = Date() // last date
         // Formatter for printing the date, adjust it according to your needs:

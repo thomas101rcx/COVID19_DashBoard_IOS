@@ -34,7 +34,6 @@
 // Optimize memory usage -- advanced
 
 
-
 //https://stackoverflow.com/questions/30832544/handle-tap-on-same-segmented-button
 
 

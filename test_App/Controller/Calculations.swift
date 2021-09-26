@@ -43,7 +43,7 @@ class Calculations {
                     }
                 }
                 // Use case for world data
-                else if (userInput == "World"){
+                else if (locationSelection == "World"){
                     
                     for column in 0...rowArray.count-(datastartIndex+1){
                         //Append data to the empty list for the first time

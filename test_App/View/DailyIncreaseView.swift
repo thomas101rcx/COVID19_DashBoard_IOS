@@ -18,6 +18,7 @@ class DailyIncreaseView: UIViewController{
     var confirmed_cases : [Double] = []
     var dailyIncreasedCases : [Double] = []
     var dailyIncreEntry = [ChartDataEntry]()
+    var data = LineChartData()
     var userInput = " "
     var list = " "
     var userSelection = " "
@@ -79,14 +80,14 @@ class DailyIncreaseView: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         graphTitle.text = "Daily New Cases"
-        let line2 = LineChartDataSet(entries: dailyIncreEntry, label: "Number of daily new cases") //Here we convert lineChartEntry to a LineChartDataSet
-        line2.colors = [NSUIColor.gray] //Sets the colour to blue
+        let dailyIncrline = LineChartDataSet(entries: dailyIncreEntry, label: "Number of daily new cases") //Here we convert lineChartEntry to a LineChartDataSet
+        dailyIncrline.colors = [NSUIColor.white] //Sets the colour to blue
+        dailyIncrline.circleRadius = 0.1 // Disable the circle on line chart
+        dailyIncrline.drawValuesEnabled = false // Disable the value next to each datapoint
         
-        let data2 = LineChartData() //This is the object that will be added to the chart
-        data2.addDataSet(line2) //Adds the line to the dataSet
+        data = LineChartData(dataSets: [dailyIncrline]) //This is the object that will be added to the chart, //Adds the line to the dataSet
         
-        
-        dailyIncrView.data = data2
+        dailyIncrView.data = data
         
         dailyIncrView.rightAxis.enabled = false
         dailyIncrView.xAxis.labelPosition = XAxis.LabelPosition.bottom
